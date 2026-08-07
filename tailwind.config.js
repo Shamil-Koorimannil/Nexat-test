@@ -6,17 +6,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: 'var(--color-bg)',
-        'bg-light': 'var(--color-bg-light)',
-        accent: 'var(--color-accent)',
-        'text-dark': 'var(--color-text-dark)',
-        'text-light': 'var(--color-text-light)',
-        star: 'var(--color-star)',
-        bubble: 'var(--color-bubble)',
+        bg: 'var(--background)',
+        'bg-light': 'var(--surface)',
+        accent: 'var(--accent)',
+        'text-dark': 'var(--background)',
+        'text-light': 'var(--primary-text)',
+        surface: 'var(--surface)',
+        divider: 'var(--divider)',
       },
       fontFamily: {
-        syne: ['Poppins', 'sans-serif'],
-        sans: ['Poppins', 'sans-serif'],
+        syne: ['Darker Grotesque', 'sans-serif'],
+        sans: ['Darker Grotesque', 'sans-serif'],
       },
     },
   },

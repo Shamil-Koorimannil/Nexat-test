@@ -32,39 +32,46 @@ const GSAPScrollSection = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="overflow-hidden bg-bg text-text-light md:h-screen">
+    <section ref={containerRef} className="overflow-hidden bg-[#0B1624] text-white md:h-screen border-t border-white/5">
       <div ref={scrollContainerRef} className="flex flex-col md:flex-row md:h-screen w-full md:w-[300vw]">
 
         {/* Panel 1 */}
         <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0">
-          <h2 className="text-5xl md:text-8xl font-syne font-bold text-center mb-4 text-accent uppercase leading-none">Fresh Juice,<br />No Nonsense.</h2>
-          <p className="text-xl md:text-2xl font-sans text-center max-w-2xl opacity-80 mt-4 leading-relaxed">
-            Coolcane reimagines the everyday drink by bringing structure, cleanliness, and creativity. We transform a basic refreshment into exciting live crushed sugarcane juice blends.
+          <h2 className="text-5xl md:text-8xl font-black text-center mb-4 text-[var(--accent)] uppercase leading-none tracking-tight">
+            Precision<br />Engineering.
+          </h2>
+          <p className="text-xl md:text-2xl font-sans text-center max-w-2xl text-[var(--secondary-text)] mt-4 leading-relaxed">
+            Every building structure begins with robust calculations, rigorous wind-load analysis, and site soil mechanics. We formulate structural longevity.
           </p>
-          {/* abstract graphic representing cane */}
-          <div className="absolute -z-10 opacity-20 transform -rotate-12 scale-150">
-            <div className="w-96 h-[800px] bg-accent/30 rounded-full blur-3xl"></div>
+          <div className="absolute -z-10 opacity-10 transform -rotate-12 scale-150">
+            <div className="w-96 h-[800px] bg-[#DA9A62]/20 rounded-full blur-3xl"></div>
           </div>
         </div>
 
         {/* Panel 2 */}
-        <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0">
-          <h2 className="text-5xl md:text-8xl font-syne font-bold text-center mb-4 text-bg-light uppercase leading-none">Drink Clean.<br />Feel Cool.</h2>
-          <p className="text-xl md:text-2xl font-sans text-center max-w-2xl text-bg-light/80 mt-4 leading-relaxed">
-            To deliver a clean, refreshing, and consistent live crushed sugarcane juice experience by combining natural ingredients, innovative flavors, and high hygiene standards.
+        <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0 bg-[#13263A]/20">
+          <h2 className="text-5xl md:text-8xl font-black text-center mb-4 text-white uppercase leading-none tracking-tight">
+            Sustainable<br />Architecture.
+          </h2>
+          <p className="text-xl md:text-2xl font-sans text-center max-w-2xl text-[var(--secondary-text)] mt-4 leading-relaxed">
+            We integrate sustainable carbon-neutral concrete, geothermal HVAC grids, smart shading dynamics, and high thermal performance directly into building geometries.
           </p>
-          <div className="absolute -z-10 opacity-20 transform rotate-12 scale-110 translate-y-20">
-            <div className="w-80 h-[800px] bg-bg-light/20 rounded-full blur-3xl"></div>
+          <div className="absolute -z-10 opacity-10 transform rotate-12 scale-110 translate-y-20">
+            <div className="w-80 h-[800px] bg-[#DA9A62]/20 rounded-full blur-3xl"></div>
           </div>
         </div>
 
         {/* Panel 3 */}
         <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0">
-          <h2 className="text-5xl md:text-8xl font-syne font-bold text-center mb-4 text-star uppercase leading-none">Live Crushed<br />Live Refreshment</h2>
-          <p className="text-xl md:text-2xl font-sans text-center max-w-2xl opacity-80 mt-4 mb-8 leading-relaxed">
-            Live crushed sugarcane juice is freshly extracted on the spot to deliver pure taste, instant energy, and a truly authentic refreshment experience.
+          <h2 className="text-5xl md:text-8xl font-black text-center mb-4 text-[var(--accent)] uppercase leading-none tracking-tight">
+            Luxury<br />Living.
+          </h2>
+          <p className="text-xl md:text-2xl font-sans text-center max-w-2xl text-[var(--secondary-text)] mt-4 leading-relaxed">
+            From bespoke interior woodwork and custom marble layouts to automated climate control. Luxury is crafted through detail.
           </p>
-
+          <div className="absolute -z-10 opacity-10 transform -rotate-6 scale-125">
+            <div className="w-96 h-[800px] bg-[#DA9A62]/10 rounded-full blur-3xl"></div>
+          </div>
         </div>
 
       </div>

@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ProductCarouselHero = () => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const captionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -17,50 +18,37 @@ const ProductCarouselHero = () => {
     window.addEventListener('resize', handleResizeCheck);
     return () => window.removeEventListener('resize', handleResizeCheck);
   }, []);
-  
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const context = canvas.getContext('2d');
-    
-    // Initial size setup
+
+    // Initial canvas dimensions
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const frameCount = isMobile ? 609 : 287;
-    
-    const currentFrame = index => {
-      if (!isMobile) {
-        return `/video-sequence/freepik_a-cinematic-highend-comme_2823566962%20(1)_${1000 + index}.webp`;
-      } else {
-        if (index <= 303) {
-          return `/cane-to-lemon-mob/cane to lemon - mob${String(index).padStart(3, '0')}.webp`;
-        } else {
-          // 304 to 608 maps to 0 to 304 in melon index
-          const melonIndex = index - 304;
-          return `/lemon-to-melon-mob/Lemon to melon - mob${String(melonIndex).padStart(3, '0')}.webp`;
-        }
-      }
-    };
+    const startFrame = 39; // ezgif-frame-040.jpg (0-indexed 39)
+    const endFrame = 283;  // ezgif-frame-284.jpg (0-indexed 283)
+    const frameCount = endFrame - startFrame + 1; // 245 frames for desktop
 
-    // Set a reasonable landing frame count to load fast, then stream the rest
-    const landingFrameCount = isMobile 
-      ? Math.min(80, frameCount) 
-      : Math.min(100, frameCount);
+    const currentFrame = (index) => 
+      `/nexath image seq/ezgif-frame-${String(index + 1).padStart(3, '0')}.jpg`;
 
-    const images = new Array(frameCount);
-    const sequence = { frame: 0 };
-    const preloadingTracker = {};
+    const images = new Array(284);
+    const sequence = { frame: startFrame };
+    let loadedCount = 0;
 
     const render = () => {
-      const img = images[sequence.frame];
+      const currentFrameIndex = Math.round(sequence.frame);
+      const img = images[currentFrameIndex];
       if (!img || !img.complete) {
         // Fallback: search for the closest loaded frame to prevent black flicker/jerkiness
         let closestImg = null;
         let minDiff = Infinity;
-        for (let i = 0; i < frameCount; i++) {
+        for (let i = startFrame; i <= endFrame; i++) {
           if (images[i] && images[i].complete) {
-            const diff = Math.abs(i - sequence.frame);
+            const diff = Math.abs(i - currentFrameIndex);
             if (diff < minDiff) {
               minDiff = diff;
               closestImg = images[i];
@@ -69,173 +57,111 @@ const ProductCarouselHero = () => {
         }
         if (closestImg) {
           context.clearRect(0, 0, canvas.width, canvas.height);
-          context.drawImage(closestImg, 0, 0, canvas.width, canvas.height);
+          drawScaledImage(closestImg, context, canvas);
         }
         return;
       }
       
       context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(img, 0, 0, canvas.width, canvas.height); 
+      drawScaledImage(img, context, canvas);
     };
 
-    const preloadFrame = (i) => {
-      if (preloadingTracker[i]) return;
-      preloadingTracker[i] = 'loading';
-      
+    // Helper function to scale and center the image (like background-size: cover)
+    const drawScaledImage = (img, ctx, canvas) => {
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+      const imgWidth = img.naturalWidth || img.width;
+      const imgHeight = img.naturalHeight || img.height;
+
+      const r = Math.max(canvasWidth / imgWidth, canvasHeight / imgHeight);
+      const nw = imgWidth * r;
+      const nh = imgHeight * r;
+      const cx = (canvasWidth - nw) / 2;
+      const cy = (canvasHeight - nh) / 2;
+
+      ctx.drawImage(img, cx, cy, nw, nh);
+    };
+
+    if (isMobile) {
+      // Mobile: Load only the single starting frame (ezgif-frame-040.jpg)
       const img = new Image();
       img.onload = () => {
-        preloadingTracker[i] = 'loaded';
-        images[i] = img;
-        if (Math.round(sequence.frame) === i) {
+        images[startFrame] = img;
+        render();
+        window.heroFramesProgress = 100;
+        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: 100 }));
+      };
+      img.onerror = () => {
+        window.heroFramesProgress = 100;
+        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: 100 }));
+      };
+      img.src = currentFrame(startFrame);
+    } else {
+      // Desktop: Preload all frames from index 39 (ezgif-frame-040) to index 283 (ezgif-frame-284)
+      const handleImageLoad = (index, img) => {
+        images[index] = img;
+        loadedCount++;
+        const progressPercent = Math.min(Math.round((loadedCount / frameCount) * 100), 100);
+        
+        // Dispatch progress to InitialLoader
+        window.heroFramesProgress = progressPercent;
+        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
+
+        if (index === startFrame) {
           render();
         }
       };
-      img.onerror = () => {
-        preloadingTracker[i] = 'error';
-        console.error(`[Preload] Failed to load dynamic frame: ${i} (src: ${currentFrame(i)})`);
+
+      const handleImageError = () => {
+        loadedCount++;
+        const progressPercent = Math.min(Math.round((loadedCount / frameCount) * 100), 100);
+        
+        window.heroFramesProgress = progressPercent;
+        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
       };
-      img.src = currentFrame(i);
-    };
 
-    let currentBackgroundIndex = landingFrameCount;
-    let backgroundStarted = false;
-
-    const startSequentialBackgroundLoading = () => {
-      if (backgroundStarted) return;
-      backgroundStarted = true;
-      
-      const loadNext = () => {
-        if (currentBackgroundIndex >= frameCount) {
-          console.log("[Preload] Sequential background loading complete!");
-          return;
-        }
-        const i = currentBackgroundIndex;
-        currentBackgroundIndex++;
-        
-        if (preloadingTracker[i]) {
-          setTimeout(loadNext, 5);
-          return;
-        }
-        
-        preloadingTracker[i] = 'loading';
+      for (let i = startFrame; i <= endFrame; i++) {
         const img = new Image();
-        img.onload = () => {
-          preloadingTracker[i] = 'loaded';
-          images[i] = img;
-          loadNext();
-        };
-        img.onerror = () => {
-          preloadingTracker[i] = 'error';
-          console.error(`[Preload] Failed to load background frame: ${i} (src: ${currentFrame(i)})`);
-          loadNext();
-        };
+        img.onload = () => handleImageLoad(i, img);
+        img.onerror = handleImageError;
         img.src = currentFrame(i);
-      };
-      
-      loadNext();
-    };
-
-    let loadedLandingCount = 0;
-    const onLandingImageLoadOrError = (index, success) => {
-      preloadingTracker[index] = success ? 'loaded' : 'error';
-      loadedLandingCount++;
-      const progressPercent = Math.min(Math.round((loadedLandingCount / landingFrameCount) * 100), 100);
-      
-      window.heroFramesProgress = progressPercent;
-      window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
-      
-      if (index === 0 && success) {
-        render();
       }
-
-      if (progressPercent === 100) {
-        console.log("[Loader] Initial landing frames 100% loaded. Starting progressive preloading.");
-        // Preload immediate next 40 frames first for buffer
-        const endRange = Math.min(frameCount - 1, landingFrameCount + 40);
-        for (let i = landingFrameCount; i <= endRange; i++) {
-          preloadFrame(i);
-        }
-        // Start background sequential stream
-        startSequentialBackgroundLoading();
-      }
-    };
-
-    // Preload landing images first
-    console.log(`[Preload] Preloading ${landingFrameCount} landing frames out of ${frameCount}...`);
-    for (let i = 0; i < landingFrameCount; i++) {
-      preloadingTracker[i] = 'loading';
-      const img = new Image();
-      img.onload = () => onLandingImageLoadOrError(i, true);
-      img.onerror = () => {
-        console.error(`[Preload] Failed to load landing frame: ${i} (src: ${currentFrame(i)})`);
-        onLandingImageLoadOrError(i, false);
-      };
-      img.src = currentFrame(i);
-      images[i] = img;
     }
 
+    // Scroll Trigger Timeline
     const ctx = gsap.context(() => {
+      if (isMobile) return; // Skip scroll animation and pinning on mobile devices
+
       const scrollConfig = {
         trigger: containerRef.current,
         start: "top top",
-        end: isMobile ? "+=1500" : "+=3000",
+        end: "+=3000",
         scrub: 0.5,
         pin: true,
-        onUpdate: (self) => {
-          const currentFrameVal = Math.round(sequence.frame);
-          const velocity = Math.abs(self.getVelocity());
-          
-          // Dynamically load more frames based on speed/velocity
-          const lookAhead = Math.max(40, Math.min(150, Math.round(velocity * 0.08)));
-          const direction = self.direction; // 1 = forward, -1 = backward
-          
-          if (direction >= 0) {
-            const start = currentFrameVal;
-            const end = Math.min(frameCount - 1, currentFrameVal + lookAhead);
-            for (let i = start; i <= end; i++) {
-              preloadFrame(i);
-            }
-          } else {
-            const start = Math.max(0, currentFrameVal - lookAhead);
-            const end = currentFrameVal;
-            for (let i = start; i <= end; i++) {
-              preloadFrame(i);
-            }
-          }
-        }
       };
 
-      if (isMobile) {
-        scrollConfig.snap = {
-          snapTo: [0, 0.5, 1],
-          duration: { min: 0.3, max: 0.8 },
-          delay: 0.05,
-          ease: "power1.inOut"
-        };
-      }
-
       gsap.to(sequence, {
-        frame: frameCount - 1,
+        frame: endFrame,
         snap: "frame",
         ease: "none",
         scrollTrigger: scrollConfig,
         onUpdate: render,
       });
 
-      // Fade out scroll indicator on scroll
-      gsap.to(".scroll-indicator", {
+      // Fade out captions and indicators on scroll (only on desktop where pinned)
+      gsap.to([captionRef.current, ".scroll-indicator"], {
         opacity: 0,
-        y: 25,
+        y: -30,
         pointerEvents: "none",
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "top+=150 top",
+          end: "top+=250 top",
           scrub: true,
         }
       });
     }, containerRef);
-    
+
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -250,29 +176,58 @@ const ProductCarouselHero = () => {
     };
   }, [isMobile]);
 
+  if (isMobile) {
+    return null;
+  }
+
   return (
-    <section ref={containerRef} className="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center">
+    <section ref={containerRef} className="relative w-full h-screen bg-[#0B1624] overflow-hidden flex flex-col justify-between py-16 px-6 md:px-12 select-none">
+      {/* Scroll-sequence Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full object-cover"></canvas>
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#0B1624]/80 via-transparent to-[#0B1624]/30 pointer-events-none" />
+
+      {/* Spacing spacer to push text down */}
+      <div className="flex-1" />
+
+      {/* Bottom Editorial Caption */}
+      <div 
+        ref={captionRef}
+        className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-baseline gap-4 border-t border-white/10 pt-8 z-10"
+      >
+        <h1 
+          className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight"
+          style={{ fontFamily: 'Darker Grotesque' }}
+        >
+          Engineering Excellence.
+        </h1>
+        
+        <h2
+          className="text-xl md:text-2xl text-[var(--accent)] font-semibold uppercase tracking-[0.12em]"
+          style={{ fontFamily: 'Darker Grotesque' }}
+        >
+          Building the Future.
+        </h2>
+      </div>
 
       {/* Scroll Down Indicator */}
       <div 
-        className="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 select-none pointer-events-none"
+        className="scroll-indicator absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 select-none pointer-events-none"
       >
-        <span className="text-[10px] tracking-[0.25em] font-syne font-black text-white/60 uppercase">
+        <span className="text-[10px] tracking-[0.25em] font-medium text-white/40 uppercase">
           Scroll Down
         </span>
-        <div className="w-[26px] h-[42px] border-2 border-white/30 rounded-full flex justify-center pt-2.5 backdrop-blur-[2px]">
+        <div className="w-[20px] h-[34px] border border-white/20 rounded-full flex justify-center pt-2 backdrop-blur-[1px]">
           <motion.div 
             animate={{
-              y: [0, 14, 0],
-              opacity: [1, 0.3, 1]
+              y: [0, 8, 0],
+              opacity: [1, 0.4, 1]
             }}
             transition={{
-              duration: 1.8,
+              duration: 2,
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="w-1.5 h-1.5 bg-accent rounded-full"
+            className="w-1 h-1 bg-[var(--accent)] rounded-full"
           />
         </div>
       </div>

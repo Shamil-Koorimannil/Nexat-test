@@ -19,116 +19,78 @@ const Roadmap = () => {
 
   const timelineItems = [
     {
-      year: '1985',
-      location: 'Shimla Coolbar',
-      subtitle: 'The Original Legacy',
-      desc: 'Where the legacy of pure refreshment began. Serving classical cooling blends and planting the seeds of what would become the Coolcane experience.',
+      phase: '01',
+      title: 'Architectural Conception & Feasibility',
+      subtitle: 'Vision & Feasibility Study',
+      desc: 'Translating client parameters into initial blueprints and spatial designs. We analyze site constraints, zoning guidelines, and perform structural feasibility modeling to secure approvals.',
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
         </svg>
       )
     },
     {
-      year: '2022',
-      location: 'Perintalmanna',
-      subtitle: 'The Rebirth & Modern Vision',
-      desc: 'The official birth of the modern Coolcane identity. Redefining traditional sugarcane juice by introducing strict hygiene, elegant presentation, and natural flavor innovation.',
+      phase: '02',
+      title: 'Advanced Structural Engineering',
+      subtitle: 'Safety & Material Rigor',
+      desc: 'Executing comprehensive calculations for load-bearing capabilities, structural mechanics, wind-loads, and seismological resistance. We engineer with advanced materials for structural longevity.',
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
       )
     },
     {
-      year: '2024',
-      location: 'Calicut beach',
-      subtitle: 'Coastline Coolness',
-      desc: 'Expanding our footprint to Kozhikode’s iconic beach. Pairing coastal ocean breezes with refreshing, freshly live-crushed sugarcane blends.',
+      phase: '03',
+      title: 'Construction & General Contracting',
+      subtitle: 'Precision Site Execution',
+      desc: 'Orchestrating raw construction works, concrete pouring, crane logistics, and civil work. Our dedicated engineers oversee daily operations, maintaining high safety standards.',
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h2a2.5 2.5 0 002.5-2.5V8a2 2 0 00-2-2h-.5A2.5 2.5 0 0113 3.5V2" />
-        </svg>
-      )
-    },
-    {
-      year: '2024',
-      location: 'Perintalmanna (Foodcourt)',
-      subtitle: 'Fast-Paced Freshness',
-      desc: 'Taking our signature live crushed sugarcane experience to bustling food courts. Delivering rapid, energetic, and clean refreshments for shoppers on the go.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2z" />
-        </svg>
-      )
-    },
-    {
-      year: '2024',
-      location: 'Ashokapuram',
-      subtitle: 'Urban Expansion',
-      desc: 'Inaugurating a sleek, modern outlet inside Ashokapuram, Kozhikode. Catering directly to students, families, and everyday active routines.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       )
     },
     {
-      year: '2025',
-      location: 'Malappuram',
-      subtitle: 'The Heart of Malabar',
-      desc: 'Bringing our pure, revitalizing sugarcane menu to Kizhakkethala, Malappuram. Establishing a vibrant hangout spot built for local youth and busy shoppers.',
+      phase: '04',
+      title: 'Bespoke Interior Architecture',
+      subtitle: 'Luxury Material Curation',
+      desc: 'Designing luxury interior layouts, bespoke woodwork, stone selection, lighting, and automation. We collaborate with international suppliers to secure custom material finishes.',
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg>
       )
     },
     {
-      year: '2025',
-      location: 'Payyambalam Beach',
-      subtitle: 'Coastal Kannur Vibe',
-      desc: 'Taking our natural refreshment shoreward to Payyambalam Beach, Kannur. Elevating shoreline relaxation with pure, live extracted hydration.',
+      phase: '05',
+      title: 'Sustainable Infrastructure & HVAC',
+      subtitle: 'Energy & Ecological Integration',
+      desc: 'Integrating geothermal systems, solar layouts, greywater recovery, smart automation, and optimal thermal acoustics. We aim for LEED/BREEAM certifications on major projects.',
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
         </svg>
       )
     },
     {
-      year: '2025',
-      location: 'Thrissur',
-      subtitle: 'Cultural Capital Freshness',
-      desc: 'Unveiling our high-standard live sugarcane juice bar in Thrissur. Infusing the cultural capital with modern hygiene and vibrant flavor combinations.',
+      phase: '06',
+      title: 'Project Handover & Facility Care',
+      subtitle: 'Lifecycle Maintenance',
+      desc: 'Providing thorough documentation, maintenance protocols, structural checks, and facility optimization services post-construction to guarantee building performance.',
       icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      )
-    },
-    {
-      year: '2025',
-      location: 'Pattambi',
-      subtitle: 'Brand New Horizons',
-      desc: 'Expanding our network further into Pattambi. Keeping our promise to deliver live crushed sugarcane juice with premium taste and absolute purity.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       )
     }
   ];
 
   return (
-    <section id="roadmap" ref={containerRef} className="py-32 bg-bg text-text-light px-4 relative overflow-hidden">
-      {/* Premium Background Visuals */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-accent/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-star/5 rounded-full blur-[160px] pointer-events-none" />
-
-      {/* Decorative Bubble accents */}
-      <div className="absolute top-1/3 right-[15%] w-16 h-16 rounded-full bg-bubble blur-md pointer-events-none animate-pulse" />
-      <div className="absolute bottom-1/3 left-[10%] w-24 h-24 rounded-full bg-bubble blur-lg pointer-events-none" />
+    <section id="services" ref={containerRef} className="py-32 bg-[#0B1624] text-white px-6 md:px-12 relative overflow-hidden">
+      {/* Background Gradients */}
+      <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#DA9A62]/3 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-10 w-[450px] h-[450px] bg-[#DA9A62]/3 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -138,39 +100,39 @@ const Roadmap = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            className="text-accent font-bold tracking-widest uppercase mb-3 text-sm"
+            className="text-[var(--accent)] font-semibold tracking-widest uppercase mb-3 text-sm"
           >
-            Our Evolution
+            Core Capabilities
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-syne font-black tracking-tight uppercase"
+            className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-none"
           >
-            How it <span className="text-accent">Began.</span>
+            Our Construction <span className="text-[var(--accent)]">Services.</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-text-light/75 mt-6 leading-relaxed font-sans"
+            className="text-lg text-[var(--secondary-text)] mt-6 leading-relaxed"
           >
-            Trace our rapid expansion from a single legendary cool bar to Kerala's most loved modern sugarcane beverage brand.
+            NEXAT delivers a unified project workflow, transforming ambitious visions into high-performing, certified corporate and residential landmarks.
           </motion.p>
         </div>
 
         {/* Timeline Flow */}
         <div className="relative">
           
-          {/* Animated Glowing Connector Path (growing on scroll) */}
-          <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-1 bg-white/10 rounded-full" />
+          {/* Timeline Connector Line */}
+          <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-[1px] bg-white/10 rounded-full" />
           
           <motion.div
             style={{ scaleY }}
-            className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-1 bg-gradient-to-b from-accent via-accent to-star rounded-full origin-top"
+            className="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 bottom-4 w-[1px] bg-[var(--accent)] rounded-full origin-top"
           />
 
           <div className="space-y-16 md:space-y-24">
@@ -182,17 +144,16 @@ const Roadmap = () => {
                   key={idx}
                   className="flex flex-col md:flex-row relative items-start md:items-center justify-between w-full"
                 >
-                  {/* Glowing Pulse Timeline Dot */}
+                  {/* Timeline Dot */}
                   <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
                     <motion.div
                       initial={{ scale: 0.5, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
                       viewport={{ once: true, margin: '-120px' }}
                       transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                      className="w-6 h-6 rounded-full bg-accent border-4 border-bg flex items-center justify-center relative cursor-pointer"
+                      className="w-5 h-5 rounded-full bg-[var(--accent)] border-4 border-[#0B1624] flex items-center justify-center relative"
                     >
-                      {/* Interactive Ripple ring */}
-                      <span className="absolute -inset-2 bg-accent/20 rounded-full animate-ping pointer-events-none" />
+                      <span className="absolute -inset-2 bg-[#DA9A62]/10 rounded-full pointer-events-none" />
                     </motion.div>
                   </div>
 
@@ -224,49 +185,48 @@ const Roadmap = () => {
   );
 };
 
-// Extracted Subcomponent for Timeline Card featuring 3D Tilt Parallax Effect and Framer Motion
+// Subcomponent for Timeline Card
 const TimelineCard = ({ item, isEven, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: isEven ? -40 : 40, y: 20 }}
+      initial={{ opacity: 0, x: isEven ? -45 : 45, y: 15 }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
-      transition={{ type: 'spring', duration: 0.8, bounce: 0.15, delay: 0.05 }}
+      transition={{ type: 'spring', duration: 0.8, bounce: 0.1, delay: 0.05 }}
       style={{ perspective: 1200 }}
     >
       <motion.div
         whileHover={{
-          scale: 1.03,
-          rotateY: isEven ? 8 : -8,
-          rotateX: 4,
-          z: 30,
-          boxShadow: '0 25px 50px -12px rgba(141, 198, 63, 0.15)'
+          scale: 1.02,
+          rotateY: isEven ? 4 : -4,
+          rotateX: 2,
+          z: 15,
         }}
-        transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-        className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] p-6 md:p-8 flex flex-col gap-5 text-left relative overflow-hidden group cursor-pointer`}
+        transition={{ type: 'spring', stiffness: 250, damping: 25 }}
+        className="bg-[#13263A]/30 backdrop-blur-sm border border-white/5 rounded-[1.5rem] p-6 md:p-8 flex flex-col gap-4 text-left relative overflow-hidden group cursor-pointer hover:border-[var(--accent)]/30 hover:bg-[#13263A]/50 transition-all duration-300"
       >
-        {/* Soft corner glow asset inside card */}
-        <div className="absolute -top-12 -right-12 w-24 h-24 bg-accent/10 rounded-full blur-2xl group-hover:bg-accent/20 transition-colors duration-300 pointer-events-none" />
+        {/* Soft glow */}
+        <div className="absolute -top-12 -right-12 w-24 h-24 bg-[#DA9A62]/3 rounded-full blur-2xl pointer-events-none" />
 
-        {/* Card Header (Year & Icon) */}
+        {/* Card Header (Phase & Icon) */}
         <div className="flex items-center justify-between gap-4">
-          <span className="font-syne font-black text-accent text-4xl md:text-5xl tracking-tight leading-none">
-            {item.year}
+          <span className="font-black text-[var(--accent)] text-3xl tracking-tight leading-none">
+            {item.phase}
           </span>
-          <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-text-dark transition-all duration-300">
+          <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[#0B1624] transition-all duration-300">
             {item.icon}
           </div>
         </div>
 
-        {/* Location & Details */}
+        {/* Details */}
         <div>
-          <h3 className="font-syne font-black text-xl md:text-2xl text-text-light group-hover:text-accent transition-colors">
-            {item.location}
+          <h3 className="font-bold text-xl text-white group-hover:text-[var(--accent)] transition-colors uppercase tracking-tight">
+            {item.title}
           </h3>
-          <p className="text-xs uppercase font-bold tracking-widest text-star mt-1">
+          <p className="text-xs uppercase font-semibold tracking-wider text-[var(--muted-text)] mt-1">
             {item.subtitle}
           </p>
-          <p className="text-text-light/70 text-sm md:text-base leading-relaxed mt-4 font-sans">
+          <p className="text-[var(--secondary-text)] text-base leading-relaxed mt-3 font-sans">
             {item.desc}
           </p>
         </div>
