@@ -6,6 +6,7 @@ import ShopsGallery from '../components/ShopsGallery';
 import FeaturesSection from '../components/FeaturesSection';
 import GSAPScrollSection from '../components/GSAPScrollSection';
 import Franchise from '../components/Franchise';
+import ScrollReveal from '../components/ScrollReveal';
 
 const Home = () => {
   return (
@@ -14,22 +15,32 @@ const Home = () => {
       <ProductCarouselHero />
       
       {/* 2. Company Section */}
-      <AboutBrand />
+      <ScrollReveal>
+        <AboutBrand />
+      </ScrollReveal>
       
       {/* 3. Services Section */}
-      <Roadmap />
+      <ScrollReveal>
+        <Roadmap />
+      </ScrollReveal>
       
       {/* 4. Projects Portfolio Section */}
-      <ShopsGallery />
+      <ScrollReveal>
+        <ShopsGallery />
+      </ScrollReveal>
       
       {/* 5. Why NEXAT Section */}
-      <FeaturesSection />
+      <ScrollReveal>
+        <FeaturesSection />
+      </ScrollReveal>
       
-      {/* 6. Why NEXAT Narrative Horizontal Scroll */}
+      {/* 6. Why NEXAT Narrative Horizontal Scroll - Unwrapped to preserve GSAP ScrollTrigger pinning metrics */}
       <GSAPScrollSection />
       
       {/* 7. Contact Section */}
-      <Franchise />
+      <ScrollReveal>
+        <Franchise />
+      </ScrollReveal>
     </main>
   );
 };

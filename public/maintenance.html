@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Metadata -->
+  <title>Under Maintenance | NEXAT</title>
+  <meta name="description"
+    content="NEXAT Construction is currently performing scheduled system maintenance to serve you with higher digital precision." />
+  <meta name="robots" content="noindex, follow" />
+
+  <link rel="icon" type="image/png" href="/Nexat favicon.png" />
+  <meta name="theme-color" content="#0B1624" />
+
+  <!-- Google Fonts: Darker Grotesque -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0B1624',
+            accent: '#DA9A62',
+            'accent-hover': '#E5A86A',
+          },
+          fontFamily: {
+            sans: ['Darker Grotesque', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0B1624;
+      color: #FFFFFF;
+      font-family: 'Darker Grotesque', sans-serif;
+    }
+
+    ::selection {
+      background-color: #DA9A62;
+      color: #0B1624;
+    }
+  </style>
+</head>
+
+<body
+  class="min-h-screen flex flex-col justify-between p-8 md:p-16 select-none bg-bg text-white relative overflow-hidden">
+
+  <!-- Understated background glow accent -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none">
+  </div>
+
+
+  <!-- Main Content Area -->
+  <main class="max-w-xl mx-auto text-center flex flex-col items-center justify-center relative z-10 py-16">
+    <span class="text-accent text-sm tracking-[0.2em] font-bold uppercase mb-6">[ SYSTEM UPGRADE ]</span>
+
+    <h1 class="text-5xl md:text-7xl font-extrabold uppercase tracking-tight leading-none mb-6">
+      TEMPORARILY<br>OFFLINE
+    </h1>
+
+    <p class="text-lg md:text-xl text-white/70 leading-relaxed font-semibold mb-8">
+      We are calibrating our digital platform to deliver a more refined engineering and architectural experience.
+    </p>
+
+    <!-- Divider line -->
+    <div class="h-[1px] w-12 bg-accent/30 mb-8"></div>
+
+    <!-- Action link -->
+    <a href="mailto:info@nexat-construction.com"
+      class="text-sm tracking-[0.18em] uppercase text-accent hover:text-accent-hover transition-colors duration-300 font-bold border-b border-accent/20 pb-1">
+      Get In Touch
+    </a>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-xs tracking-wider text-white/40 text-center relative z-10">
+    © 2026 NEXAT Construction. All rights reserved.
+  </footer>
+
+</body>
+
+</html>

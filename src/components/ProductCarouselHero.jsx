@@ -20,6 +20,9 @@ const ProductCarouselHero = () => {
   }, []);
 
   useEffect(() => {
+    // Only run sequence animation on desktop
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const context = canvas.getContext('2d');
@@ -82,56 +85,37 @@ const ProductCarouselHero = () => {
       ctx.drawImage(img, cx, cy, nw, nh);
     };
 
-    if (isMobile) {
-      // Mobile: Load only the single starting frame (ezgif-frame-040.jpg)
-      const img = new Image();
-      img.onload = () => {
-        images[startFrame] = img;
+    const handleImageLoad = (index, img) => {
+      images[index] = img;
+      loadedCount++;
+      const progressPercent = Math.min(Math.round((loadedCount / frameCount) * 100), 100);
+      
+      // Dispatch progress to InitialLoader
+      window.heroFramesProgress = progressPercent;
+      window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
+
+      if (index === startFrame) {
         render();
-        window.heroFramesProgress = 100;
-        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: 100 }));
-      };
-      img.onerror = () => {
-        window.heroFramesProgress = 100;
-        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: 100 }));
-      };
-      img.src = currentFrame(startFrame);
-    } else {
-      // Desktop: Preload all frames from index 39 (ezgif-frame-040) to index 283 (ezgif-frame-284)
-      const handleImageLoad = (index, img) => {
-        images[index] = img;
-        loadedCount++;
-        const progressPercent = Math.min(Math.round((loadedCount / frameCount) * 100), 100);
-        
-        // Dispatch progress to InitialLoader
-        window.heroFramesProgress = progressPercent;
-        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
-
-        if (index === startFrame) {
-          render();
-        }
-      };
-
-      const handleImageError = () => {
-        loadedCount++;
-        const progressPercent = Math.min(Math.round((loadedCount / frameCount) * 100), 100);
-        
-        window.heroFramesProgress = progressPercent;
-        window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
-      };
-
-      for (let i = startFrame; i <= endFrame; i++) {
-        const img = new Image();
-        img.onload = () => handleImageLoad(i, img);
-        img.onerror = handleImageError;
-        img.src = currentFrame(i);
       }
+    };
+
+    const handleImageError = () => {
+      loadedCount++;
+      const progressPercent = Math.min(Math.round((loadedCount / frameCount) * 100), 100);
+      
+      window.heroFramesProgress = progressPercent;
+      window.dispatchEvent(new CustomEvent('hero-frames-progress', { detail: progressPercent }));
+    };
+
+    for (let i = startFrame; i <= endFrame; i++) {
+      const img = new Image();
+      img.onload = () => handleImageLoad(i, img);
+      img.onerror = handleImageError;
+      img.src = currentFrame(i);
     }
 
     // Scroll Trigger Timeline
     const ctx = gsap.context(() => {
-      if (isMobile) return; // Skip scroll animation and pinning on mobile devices
-
       const scrollConfig = {
         trigger: containerRef.current,
         start: "top top",
@@ -148,7 +132,7 @@ const ProductCarouselHero = () => {
         onUpdate: render,
       });
 
-      // Fade out captions and indicators on scroll (only on desktop where pinned)
+      // Fade out captions and indicators on scroll
       gsap.to([captionRef.current, ".scroll-indicator"], {
         opacity: 0,
         y: -30,
@@ -176,10 +160,132 @@ const ProductCarouselHero = () => {
     };
   }, [isMobile]);
 
+  const scrollToNextSection = (e) => {
+    if (e) e.preventDefault();
+    const nextSection = document.getElementById('about');
+    if (nextSection) {
+      const headerOffset = 80;
+      const elementPosition = nextSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // 1. Mobile Landing Page geometric layout
   if (isMobile) {
-    return null;
+    return (
+      <section 
+        id="hero" 
+        className="w-full pt-24 pb-8 bg-[#0B1624] select-none relative overflow-hidden"
+      >
+        {/* Scroll down text in the padding space (left vertical margin) */}
+        <motion.div 
+          className="absolute left-6 bottom-24 origin-bottom-left -rotate-90 text-[10px] uppercase tracking-[0.25em] text-white/45 font-bold select-none z-10 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          Scroll Down &rarr;
+        </motion.div>
+
+        {/* SVG Geometric Container */}
+        <motion.div 
+          className="w-full max-w-[300px] mx-auto p-4 z-0 aspect-[1/2] relative"
+          initial={{ opacity: 0, y: 40, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ 
+            duration: 1.2, 
+            delay: 0.3, 
+            ease: [0.16, 1, 0.3, 1] 
+          }}
+        >
+          <svg 
+            viewBox="0 0 400 800" 
+            className="w-full h-full select-none" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <clipPath id="bigBoxClip">
+                <path d="M 50 20 L 350 20 C 366 20, 380 34, 380 50 L 380 750 C 380 766, 366 780, 350 780 L 310 780 C 295 780, 272 772, 260 760 L 40 540 C 28 528, 20 505, 20 490 L 20 50 C 20 34, 34 20, 50 20 Z" />
+              </clipPath>
+            </defs>
+
+            {/* Big Box Image Frame */}
+            <g clipPath="url(#bigBoxClip)">
+              <image 
+                href="/headquarters.png" 
+                x="20" 
+                y="20" 
+                width="360" 
+                height="760" 
+                preserveAspectRatio="xMidYMid slice" 
+              />
+            </g>
+
+            {/* Triangle Button Section */}
+            <g 
+              onClick={scrollToNextSection} 
+              onTouchStart={scrollToNextSection} 
+              className="cursor-pointer group"
+            >
+              {/* Background rounded triangle */}
+              <path 
+                d="M 20 575 C 20 568, 26 576, 31 571 L 224 764 C 232 772, 228 780, 218 780 L 50 780 C 34 780, 20 766, 20 750 Z" 
+                fill="#DA9A62" 
+                className="transition-colors duration-300 group-hover:fill-[#E5A86A]"
+              />
+              
+              {/* Downward Chevron Scroll Indicator */}
+              <g transform="translate(80, 675)" className="transition-transform duration-300 group-hover:translate-y-1">
+                <path 
+                  d="M-8 -4 L0 4 L8 -4" 
+                  stroke="#0B1624" 
+                  strokeWidth="3.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  fill="none" 
+                />
+              </g>
+
+              {/* Scroll Down text layered inside the triangle */}
+              <text 
+                x="80" 
+                y="718" 
+                fill="#0B1624" 
+                fontSize="16" 
+                fontWeight="900" 
+                fontFamily="'Darker Grotesque', sans-serif" 
+                textAnchor="middle" 
+                letterSpacing="0.08em"
+                className="select-none pointer-events-none"
+              >
+                SCROLL
+              </text>
+              <text 
+                x="80" 
+                y="738" 
+                fill="#0B1624" 
+                fontSize="16" 
+                fontWeight="900" 
+                fontFamily="'Darker Grotesque', sans-serif" 
+                textAnchor="middle" 
+                letterSpacing="0.08em"
+                className="select-none pointer-events-none"
+              >
+                DOWN
+              </text>
+            </g>
+          </svg>
+        </motion.div>
+      </section>
+    );
   }
 
+  // 2. Desktop Scroll-Sequence Canvas Layout
   return (
     <section ref={containerRef} className="relative w-full h-screen bg-[#0B1624] overflow-hidden flex flex-col justify-between py-16 px-6 md:px-12 select-none">
       {/* Scroll-sequence Canvas */}
