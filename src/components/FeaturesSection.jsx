@@ -88,7 +88,15 @@ const FeaturesSection = () => {
   }));
 
   return (
-    <section id="why-nexat" className="relative w-full py-32 bg-[#0B1624] px-6 md:px-12 overflow-hidden text-white border-t border-white/5">
+    <section id="why-nexat" className="relative w-full py-32 bg-[#F9FAFB] px-6 md:px-12 overflow-hidden text-[#0B1624] border-t border-[#0B1624]/5">
+      {/* Subtle dotted structural/engineering pattern overlay */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `radial-gradient(#0B1624 1px, transparent 1px)`,
+          backgroundSize: '32px 32px'
+        }}
+      />
       
       {/* Background Decor */}
       <div className="absolute top-1/4 right-[10%] w-96 h-96 bg-[#DA9A62]/3 rounded-full blur-[140px] pointer-events-none" />
@@ -100,7 +108,7 @@ const FeaturesSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[var(--accent)] text-sm tracking-[0.2em] font-semibold uppercase mb-3"
+            className="text-[#DA9A62] text-sm tracking-[0.2em] font-semibold uppercase mb-3"
           >
             {current.standard}
           </motion.p>
@@ -108,7 +116,7 @@ const FeaturesSection = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight leading-none"
+            className="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight leading-none text-[#0B1624]"
           >
             {current.title}
           </motion.h2>
@@ -117,7 +125,7 @@ const FeaturesSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-[var(--secondary-text)] mt-4 leading-relaxed"
+            className="text-lg text-[#2C374E] mt-4 leading-relaxed"
           >
             {current.desc}
           </motion.p>
@@ -131,14 +139,14 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className={`flex flex-col p-8 rounded-[1.5rem] bg-[#13263A]/40 border border-white/5 hover:border-[var(--accent)]/30 hover:bg-[#13263A]/60 transition-all duration-300 group cursor-pointer ${isRtl ? 'text-right items-end' : 'text-left items-start'}`}
+              className={`flex flex-col p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/8 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/50 hover:shadow-[0_12px_40px_rgba(11,22,36,0.06)] hover:-translate-y-1 transition-all duration-300 group cursor-pointer ${isRtl ? 'text-right items-end' : 'text-left items-start'}`}
             >
               {/* Feature Icon frame */}
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 mb-6 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[#0B1624] transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-[#0B1624]/5 border border-[#0B1624]/10 mb-6 flex items-center justify-center text-[#DA9A62] group-hover:bg-[#DA9A62] group-hover:text-white transition-all duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 uppercase tracking-tight text-white">{feature.title}</h3>
-              <p className="text-[var(--secondary-text)] leading-relaxed text-base font-sans">
+              <h3 className="text-xl font-bold mb-3 uppercase tracking-tight text-[#0B1624] group-hover:text-[#DA9A62] transition-colors">{feature.title}</h3>
+              <p className="text-[#2C374E] leading-relaxed text-base font-sans">
                 {feature.desc}
               </p>
             </motion.div>

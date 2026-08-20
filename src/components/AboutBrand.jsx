@@ -37,9 +37,18 @@ const AboutBrand = () => {
   const current = content[lang];
 
   return (
-    <section id="about" className="py-32 bg-[#0B1624] text-white px-6 md:px-12 relative overflow-hidden">
+    <section id="about" className="py-32 bg-white text-[#0B1624] px-6 md:px-12 relative overflow-hidden border-t border-[#0B1624]/5">
+      {/* Architectural blueprint grid overlay */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `linear-gradient(to right, #0B1624 1px, transparent 1px), linear-gradient(to bottom, #0B1624 1px, transparent 1px)`,
+          backgroundSize: '80px 80px'
+        }}
+      />
+      
       {/* Decorative ambient light */}
-      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#DA9A62]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#DA9A62]/3 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
         
@@ -50,7 +59,7 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-8 tracking-tight leading-none text-[var(--accent)]"
+            className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-8 tracking-tight leading-none text-[#0B1624]"
           >
             {current.title}
           </motion.h2>
@@ -60,7 +69,7 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-2xl font-bold uppercase mb-4 text-white"
+            className="text-2xl font-bold uppercase mb-4 text-[#0B1624]"
           >
             {current.ceoTitle}
           </motion.h3>
@@ -70,7 +79,7 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.25 }}
-            className="text-base text-[var(--secondary-text)] mb-8 leading-relaxed italic"
+            className="text-base text-[#2C374E] mb-8 leading-relaxed italic"
           >
             "{current.ceoMessage}"
           </motion.p>
@@ -80,7 +89,7 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-2xl font-bold uppercase mb-4 text-white"
+            className="text-2xl font-bold uppercase mb-4 text-[#0B1624]"
           >
             {current.overviewTitle}
           </motion.h3>
@@ -90,7 +99,7 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.35 }}
-            className="text-base text-[var(--secondary-text)] leading-relaxed"
+            className="text-base text-[#2C374E] leading-relaxed"
           >
             {current.overviewMessage}
           </motion.p>
@@ -102,10 +111,10 @@ const AboutBrand = () => {
             initial={{ opacity: 0, x: isRtl ? -30 : 30 }} 
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true }}
-            className="p-6 md:p-8 rounded-[1.5rem] bg-[#13263A]/40 border border-white/5"
+            className="p-6 md:p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.05)] transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">{current.missionTitle}</h3>
-            <p className={`text-base text-[var(--secondary-text)] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
+            <h3 className="text-2xl font-bold mb-3 text-[#0B1624] uppercase tracking-tight">{current.missionTitle}</h3>
+            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
               {current.missionText}
             </p>
           </motion.div>
@@ -115,10 +124,10 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true }} 
             transition={{ delay: 0.1 }}
-            className="p-6 md:p-8 rounded-[1.5rem] bg-[#13263A]/40 border border-white/5"
+            className="p-6 md:p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.05)] transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">{current.visionTitle}</h3>
-            <p className={`text-base text-[var(--secondary-text)] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
+            <h3 className="text-2xl font-bold mb-3 text-[#0B1624] uppercase tracking-tight">{current.visionTitle}</h3>
+            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
               {current.visionText}
             </p>
           </motion.div>
@@ -128,10 +137,10 @@ const AboutBrand = () => {
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true }} 
             transition={{ delay: 0.2 }}
-            className="p-6 md:p-8 rounded-[1.5rem] bg-[#13263A]/40 border border-white/5"
+            className="p-6 md:p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.05)] transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-tight">{current.valuesTitle}</h3>
-            <p className={`text-base text-[var(--secondary-text)] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
+            <h3 className="text-2xl font-bold mb-3 text-[#0B1624] uppercase tracking-tight">{current.valuesTitle}</h3>
+            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
               {current.valuesText}
             </p>
           </motion.div>

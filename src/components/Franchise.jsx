@@ -137,7 +137,16 @@ const Franchise = () => {
   const current = translations[lang];
 
   return (
-    <section id="contact" ref={containerRef} className="py-32 px-6 md:px-12 bg-[#13263A] text-white relative overflow-hidden border-t border-white/5">
+    <section id="contact" ref={containerRef} className="py-32 px-6 md:px-12 bg-white text-[#0B1624] relative overflow-hidden border-t border-[#0B1624]/5">
+      {/* Subtle linear architectural vertical lines pattern overlay */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `linear-gradient(to right, #0B1624 1px, transparent 1px)`,
+          backgroundSize: '120px 100%'
+        }}
+      />
+
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#DA9A62]/3 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#DA9A62]/3 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
@@ -146,19 +155,19 @@ const Franchise = () => {
         
         {/* Left Side: Text */}
         <div ref={textRef} className={`flex-1 space-y-6 ${isRtl ? 'text-right' : 'text-left'}`}>
-          <h2 className="text-sm uppercase tracking-[0.25em] font-semibold text-[var(--accent)]">
+          <h2 className="text-sm uppercase tracking-[0.25em] font-semibold text-[#DA9A62]">
             {current.sectionTitle}
           </h2>
-          <h3 className="text-4xl md:text-6xl font-black text-white leading-none uppercase tracking-tight">
+          <h3 className="text-4xl md:text-6xl font-black text-[#0B1624] leading-none uppercase tracking-tight">
             {current.title} <br />{current.titleAccent}
           </h3>
-          <p className="text-lg text-[var(--secondary-text)] max-w-lg leading-relaxed font-sans">
+          <p className="text-lg text-[#2C374E] max-w-lg leading-relaxed font-sans">
             {current.desc}
           </p>
           <div className="pt-4">
              <button 
                onClick={() => setShowForm(true)}
-               className="px-8 py-4 bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-[#0B1624] uppercase tracking-wider font-bold rounded-xl transition-all duration-300 shadow-lg text-sm"
+               className="px-8 py-4 bg-[#DA9A62] hover:bg-[#DA9A62]/90 text-[#0B1624] uppercase tracking-wider font-bold rounded-xl transition-all duration-300 shadow-lg text-sm"
              >
                {current.btnRequest}
              </button>
@@ -175,29 +184,29 @@ const Franchise = () => {
                 animate={{ opacity: 1, rotateY: 0 }}
                 exit={{ opacity: 0, rotateY: 90 }}
                 transition={{ duration: 0.4 }}
-                className={`absolute inset-0 bg-[#0B1624] border border-white/5 rounded-2xl p-8 md:p-10 shadow-2xl flex flex-col justify-between overflow-hidden group ${isRtl ? 'text-right' : 'text-left'}`}
+                className={`absolute inset-0 bg-[#F9FAFB] border border-[#0B1624]/10 rounded-2xl p-8 md:p-10 shadow-[0_20px_50px_rgba(11,22,36,0.04)] flex flex-col justify-between overflow-hidden group ${isRtl ? 'text-right' : 'text-left'}`}
               >
-                 <div className="absolute inset-0 bg-gradient-to-br from-[#DA9A62]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                 <div className="absolute inset-0 bg-gradient-to-br from-[#DA9A62]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                  
                  <div>
-                   <h4 className="text-2xl font-bold uppercase tracking-tight text-white mb-2">{current.cardTitle}</h4>
-                   <p className="text-xs uppercase tracking-wider text-[var(--accent)] font-semibold mb-6">{current.cardSubtitle}</p>
+                   <h4 className="text-2xl font-bold uppercase tracking-tight text-[#0B1624] mb-2">{current.cardTitle}</h4>
+                   <p className="text-xs uppercase tracking-wider text-[#DA9A62] font-semibold mb-6">{current.cardSubtitle}</p>
                    
                    <div className="space-y-4 my-8">
-                     <div className={`flex items-start space-x-3 text-base text-[var(--secondary-text)] ${isRtl ? 'space-x-reverse' : ''}`}>
-                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-[var(--accent)]">
+                     <div className={`flex items-start space-x-3 text-base text-[#2C374E] ${isRtl ? 'space-x-reverse' : ''}`}>
+                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-lg bg-[#0B1624]/5 border border-[#0B1624]/10 flex items-center justify-center text-[#DA9A62]">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                        </div>
                        <p className="font-sans">{current.point1}</p>
                      </div>
-                     <div className={`flex items-start space-x-3 text-base text-[var(--secondary-text)] ${isRtl ? 'space-x-reverse' : ''}`}>
-                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-[var(--accent)]">
+                     <div className={`flex items-start space-x-3 text-base text-[#2C374E] ${isRtl ? 'space-x-reverse' : ''}`}>
+                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-lg bg-[#0B1624]/5 border border-[#0B1624]/10 flex items-center justify-center text-[#DA9A62]">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                        </div>
                        <p className="font-sans">{current.point2}</p>
                      </div>
-                     <div className={`flex items-start space-x-3 text-base text-[var(--secondary-text)] ${isRtl ? 'space-x-reverse' : ''}`}>
-                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-[var(--accent)]">
+                     <div className={`flex items-start space-x-3 text-base text-[#2C374E] ${isRtl ? 'space-x-reverse' : ''}`}>
+                       <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-lg bg-[#0B1624]/5 border border-[#0B1624]/10 flex items-center justify-center text-[#DA9A62]">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                        </div>
                        <p className="font-sans">{current.point3}</p>
@@ -207,10 +216,10 @@ const Franchise = () => {
                  
                  <button 
                    onClick={() => setShowForm(true)}
-                   className={`inline-flex items-center justify-between w-full border border-white/10 hover:border-[var(--accent)] px-6 py-4 rounded-xl text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 ${isRtl ? 'flex-row-reverse' : ''}`}
+                   className={`inline-flex items-center justify-between w-full border border-[#0B1624]/10 hover:border-[#DA9A62] px-6 py-4 rounded-xl text-sm font-bold uppercase tracking-wider text-[#0B1624] hover:bg-[#DA9A62] hover:text-white transition-all duration-300 ${isRtl ? 'flex-row-reverse' : ''}`}
                  >
                    <span>{current.btnRfp}</span>
-                   <span className={`text-[var(--accent)] transform transition-transform ${isRtl ? 'rotate-180' : ''}`}>→</span>
+                   <span className={`text-[#DA9A62] transform transition-transform ${isRtl ? 'rotate-180' : ''}`}>→</span>
                  </button>
               </motion.div>
             ) : (
@@ -220,11 +229,11 @@ const Franchise = () => {
                 animate={{ opacity: 1, rotateY: 0 }}
                 exit={{ opacity: 0, rotateY: -90 }}
                 transition={{ duration: 0.4 }}
-                className={`absolute inset-0 bg-[#0B1624] border border-white/5 rounded-2xl p-8 md:p-10 shadow-2xl flex flex-col ${isRtl ? 'text-right' : 'text-left'}`}
+                className={`absolute inset-0 bg-[#F9FAFB] border border-[#0B1624]/10 rounded-2xl p-8 md:p-10 shadow-[0_20px_50px_rgba(11,22,36,0.04)] flex flex-col ${isRtl ? 'text-right' : 'text-left'}`}
               >
                 <div className={`flex justify-between items-center mb-6 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                  <h4 className="text-xl font-bold uppercase tracking-tight text-white">{current.formTitle}</h4>
-                  <button onClick={() => setShowForm(false)} className="text-white/40 hover:text-white transition-colors">
+                  <h4 className="text-xl font-bold uppercase tracking-tight text-[#0B1624]">{current.formTitle}</h4>
+                  <button onClick={() => setShowForm(false)} className="text-[#0B1624]/40 hover:text-[#0B1624] transition-colors">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                   </button>
                 </div>
@@ -232,10 +241,10 @@ const Franchise = () => {
                 {status === 'success' ? (
                   <div className="flex-1 flex flex-col items-center justify-center text-center space-y-4">
                     <div className="w-14 h-14 bg-[#DA9A62]/10 rounded-full flex items-center justify-center border border-[#DA9A62]/20">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DA9A62" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     </div>
-                    <h5 className="text-xl font-bold uppercase tracking-tight text-white">{current.submittedTitle}</h5>
-                    <p className="text-[var(--secondary-text)] text-sm font-sans">{current.submittedDesc}</p>
+                    <h5 className="text-xl font-bold uppercase tracking-tight text-[#0B1624]">{current.submittedTitle}</h5>
+                    <p className="text-[#2C374E] text-sm font-sans">{current.submittedDesc}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-4">
@@ -246,7 +255,7 @@ const Franchise = () => {
                       value={formData.name} 
                       onChange={handleInputChange} 
                       placeholder={current.placeholderName} 
-                      className={`w-full px-4 py-3.5 bg-[#13263A]/40 border border-white/5 rounded-xl focus:outline-none focus:border-[var(--accent)] text-white font-sans text-sm ${isRtl ? 'text-right' : 'text-left'}`} 
+                      className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] placeholder-[#0B1624]/40 font-sans text-sm shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right' : 'text-left'}`} 
                     />
                     <input 
                       required 
@@ -255,7 +264,7 @@ const Franchise = () => {
                       value={formData.email} 
                       onChange={handleInputChange} 
                       placeholder={current.placeholderEmail} 
-                      className={`w-full px-4 py-3.5 bg-[#13263A]/40 border border-white/5 rounded-xl focus:outline-none focus:border-[var(--accent)] text-white font-sans text-sm ${isRtl ? 'text-right' : 'text-left'}`} 
+                      className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] placeholder-[#0B1624]/40 font-sans text-sm shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right' : 'text-left'}`} 
                     />
                     <input 
                       required 
@@ -264,7 +273,7 @@ const Franchise = () => {
                       value={formData.location} 
                       onChange={handleInputChange} 
                       placeholder={current.placeholderLocation} 
-                      className={`w-full px-4 py-3.5 bg-[#13263A]/40 border border-white/5 rounded-xl focus:outline-none focus:border-[var(--accent)] text-white font-sans text-sm ${isRtl ? 'text-right' : 'text-left'}`} 
+                      className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] placeholder-[#0B1624]/40 font-sans text-sm shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right' : 'text-left'}`} 
                     />
                     
                     <div className="relative">
@@ -273,8 +282,8 @@ const Franchise = () => {
                         name="budget" 
                         value={formData.budget} 
                         onChange={handleInputChange} 
-                        className={`w-full px-4 py-3.5 bg-[#13263A]/40 border border-white/5 rounded-xl focus:outline-none focus:border-[var(--accent)] text-white font-sans text-sm appearance-none select-menu ${isRtl ? 'text-right pr-4 pl-10' : 'text-left pl-4 pr-10'}`}
-                        style={{ color: formData.budget === '' ? 'rgba(255,255,255,.45)' : 'white' }}
+                        className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] font-sans text-sm appearance-none select-menu shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right pr-4 pl-10' : 'text-left pl-4 pr-10'}`}
+                        style={{ color: formData.budget === '' ? 'rgba(11,22,36,0.4)' : '#0B1624' }}
                       >
                         <option value="" disabled>{current.placeholderBudget}</option>
                         {current.budgets.map(b => (
@@ -282,7 +291,7 @@ const Franchise = () => {
                         ))}
                       </select>
                       {/* Custom dropdown caret indicator */}
-                      <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none text-white/40 ${isRtl ? 'left-4' : 'right-4'}`}>
+                      <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none text-[#0B1624]/40 ${isRtl ? 'left-4' : 'right-4'}`}>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M6 9l6 6 6-6"/></svg>
                       </div>
                     </div>
@@ -290,10 +299,10 @@ const Franchise = () => {
                     <button 
                       type="submit" 
                       disabled={status === 'loading'}
-                      className="mt-auto w-full py-4 bg-[var(--accent)] text-[#0B1624] font-bold uppercase tracking-wider rounded-xl hover:bg-[var(--accent-hover)] transition-all duration-300 disabled:opacity-50 flex justify-center items-center h-[52px] text-sm"
+                      className="mt-auto w-full py-4 bg-[#0B1624] text-white font-bold uppercase tracking-wider rounded-xl hover:bg-[#DA9A62] hover:text-[#0B1624] transition-all duration-300 disabled:opacity-50 flex justify-center items-center h-[52px] text-sm shadow-md"
                     >
                       {status === 'loading' ? (
-                        <div className="w-5 h-5 border-2 border-[#0B1624] border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                       ) : (
                         current.btnSubmit
                       )}
