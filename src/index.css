@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -83,4 +83,26 @@ body,
 ::selection {
   background-color: var(--accent);
   color: var(--background);
+}
+
+/* RTL / Arabic Font overrides */
+[dir="rtl"], .rtl-mode {
+  font-family: 'Cairo', sans-serif !important;
+}
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+.rtl-mode h1, .rtl-mode h2, .rtl-mode h3, .rtl-mode h4, .rtl-mode h5, .rtl-mode h6 {
+  font-family: 'Cairo', sans-serif !important;
+}
+
+/* Slow Spin Animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
 }

@@ -1,0 +1,16 @@
+--- PAGE 1 ---
+1
+Sub Total 30,000.00
+Total ₹30,000.00
+Balance Due ₹30,000.00
+Invoice Date : 28/07/2026
+Bill To 
+Naxath
+# Item & Description Qty Rate Amount
+1  Branding (Basic) 1.00 20,000.00 20,000.00
+2  Website (Basic)
+Landing Page (1 page)
+1.00 10,000.00 10,000.00
+Notes
+Payment Terms: A 50% advance payment of ₹15,000 is required to confirm the order. The remaining ₹15,000 is due upon project completion (or 
+before final delivery).

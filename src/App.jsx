@@ -6,12 +6,13 @@ import CookieBanner from './components/CookieBanner';
 import CustomCursor from './components/CustomCursor';
 import InitialLoader from './components/InitialLoader';
 import Home from './pages/Home';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <>
+    <LanguageProvider>
       {loading && <InitialLoader onComplete={() => setLoading(false)} />}
       <CustomCursor />
       <Navbar />
@@ -22,7 +23,7 @@ function App() {
       
       <Footer />
       <CookieBanner />
-    </>
+    </LanguageProvider>
   );
 }
 

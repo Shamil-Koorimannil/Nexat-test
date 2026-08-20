@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Roadmap = () => {
   const containerRef = useRef(null);
+  const { lang, isRtl } = useLanguage();
 
   // Scroll animation for the growing timeline line
   const { scrollYProgress } = useScroll({
@@ -17,74 +19,136 @@ const Roadmap = () => {
     restDelta: 0.001
   });
 
-  const timelineItems = [
-    {
-      phase: '01',
-      title: 'Architectural Conception & Feasibility',
-      subtitle: 'Vision & Feasibility Study',
-      desc: 'Translating client parameters into initial blueprints and spatial designs. We analyze site constraints, zoning guidelines, and perform structural feasibility modeling to secure approvals.',
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-        </svg>
-      )
+  const translations = {
+    en: {
+      sectionTitle: 'Core Capabilities',
+      title: 'Our Construction',
+      titleAccent: 'Services.',
+      desc: 'NEXAT delivers a unified project workflow, transforming ambitious visions into high-performing, certified corporate and residential landmarks.',
+      items: [
+        {
+          phase: '01',
+          title: 'Architectural Conception & Feasibility',
+          subtitle: 'Vision & Feasibility Study',
+          desc: 'Translating client parameters into initial blueprints and spatial designs. We analyze site constraints, zoning guidelines, and perform structural feasibility modeling to secure approvals.'
+        },
+        {
+          phase: '02',
+          title: 'Advanced Structural Engineering',
+          subtitle: 'Safety & Material Rigor',
+          desc: 'Executing comprehensive calculations for load-bearing capabilities, structural mechanics, wind-loads, and seismological resistance. We engineer with advanced materials for structural longevity.'
+        },
+        {
+          phase: '03',
+          title: 'Construction & General Contracting',
+          subtitle: 'Precision Site Execution',
+          desc: 'Orchestrating raw construction works, concrete pouring, crane logistics, and civil work. Our dedicated engineers oversee daily operations, maintaining high safety standards.'
+        },
+        {
+          phase: '04',
+          title: 'Bespoke Interior Architecture',
+          subtitle: 'Luxury Material Curation',
+          desc: 'Designing luxury interior layouts, bespoke woodwork, stone selection, lighting, and automation. We collaborate with international suppliers to secure custom material finishes.'
+        },
+        {
+          phase: '05',
+          title: 'Sustainable Infrastructure & HVAC',
+          subtitle: 'Energy & Ecological Integration',
+          desc: 'Integrating geothermal systems, solar layouts, greywater recovery, smart automation, and optimal thermal acoustics. We aim for LEED/BREEAM certifications on major projects.'
+        },
+        {
+          phase: '06',
+          title: 'Project Handover & Facility Care',
+          subtitle: 'Lifecycle Maintenance',
+          desc: 'Providing thorough documentation, maintenance protocols, structural checks, and facility optimization services post-construction to guarantee building performance.'
+        }
+      ]
     },
-    {
-      phase: '02',
-      title: 'Advanced Structural Engineering',
-      subtitle: 'Safety & Material Rigor',
-      desc: 'Executing comprehensive calculations for load-bearing capabilities, structural mechanics, wind-loads, and seismological resistance. We engineer with advanced materials for structural longevity.',
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      )
-    },
-    {
-      phase: '03',
-      title: 'Construction & General Contracting',
-      subtitle: 'Precision Site Execution',
-      desc: 'Orchestrating raw construction works, concrete pouring, crane logistics, and civil work. Our dedicated engineers oversee daily operations, maintaining high safety standards.',
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      )
-    },
-    {
-      phase: '04',
-      title: 'Bespoke Interior Architecture',
-      subtitle: 'Luxury Material Curation',
-      desc: 'Designing luxury interior layouts, bespoke woodwork, stone selection, lighting, and automation. We collaborate with international suppliers to secure custom material finishes.',
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      )
-    },
-    {
-      phase: '05',
-      title: 'Sustainable Infrastructure & HVAC',
-      subtitle: 'Energy & Ecological Integration',
-      desc: 'Integrating geothermal systems, solar layouts, greywater recovery, smart automation, and optimal thermal acoustics. We aim for LEED/BREEAM certifications on major projects.',
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-        </svg>
-      )
-    },
-    {
-      phase: '06',
-      title: 'Project Handover & Facility Care',
-      subtitle: 'Lifecycle Maintenance',
-      desc: 'Providing thorough documentation, maintenance protocols, structural checks, and facility optimization services post-construction to guarantee building performance.',
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
+    ar: {
+      sectionTitle: 'القدرات الأساسية',
+      title: 'خدمات المقاولات و',
+      titleAccent: 'الإنشاءات.',
+      desc: 'تقدم نكسات مسار عمل موحد للمشاريع، يحول الرؤى الطموحة إلى معالم سكنية وتجارية مميزة وعالية الأداء.',
+      items: [
+        {
+          phase: '٠١',
+          title: 'التصميم المعماري ودراسة الجدوى',
+          subtitle: 'الرؤية ودراسة الجدوى',
+          desc: 'تحويل متطلبات العميل إلى مخططات أولية وتصميمات فراغية. نقوم بتحليل قيود الموقع وإرشادات التخطيط ونمذجة الجدوى الإنشائية للحصول على الموافقات.'
+        },
+        {
+          phase: '٠٢',
+          title: 'الهندسة الإنشائية المتقدمة',
+          subtitle: 'السلامة ومتانة المواد',
+          desc: 'إجراء الحسابات الشاملة للقدرات الحاملة والميكانيكا الإنشائية وأحمال الرياح ومقاومة الزلازل. نصمم باستخدام مواد متقدمة لضمان المتانة الطويلة الأجل.'
+        },
+        {
+          phase: '٠٣',
+          title: 'البناء والمقاولات العامة',
+          subtitle: 'دقة التنفيذ في الموقع',
+          desc: 'تنظيم أعمال البناء الأساسية، وصب الخرسانة، ولوجستيات الرافعات، والأعمال المدنية. يشرف مهندسونا المختصون على العمليات اليومية مع الحفاظ على أعلى معايير السلامة.'
+        },
+        {
+          phase: '٠٤',
+          title: 'التصميم الداخلي المعماري الفاخر',
+          subtitle: 'تنسيق المواد الفاخرة',
+          desc: 'تصميم مخططات داخلية فاخرة، وأعمال خشبية مخصصة، واختيار الأحجار والرخام، والإضاءة والأتمتة الذكية. نتعاون مع موردين دوليين لتأمين تشطيبات مميزة مخصصة.'
+        },
+        {
+          phase: '٠٥',
+          title: 'البنية التحتية المستدامة والتكييف',
+          subtitle: 'تكامل الطاقة والبيئة',
+          desc: 'دمج الأنظمة الحرارية الأرضية، ومخططات الطاقة الشمسية، واستعادة المياه الرمادية، والأتمتة الذكية، والعزل الصوتي والحراري الأمثل. نهدف للحصول على شهادات LEED/BREEAM في المشاريع الكبرى.'
+        },
+        {
+          phase: '٠٦',
+          title: 'تسليم المشروع ورعاية المرافق',
+          subtitle: 'صيانة دورة حياة المبنى',
+          desc: 'تقديم توثيق شامل، وبروتوكولات الصيانة، والفحوصات الإنشائية، وخدمات تحسين المرافق بعد البناء لضمان أعلى أداء للمبنى.'
+        }
+      ]
     }
+  };
+
+  const current = translations[lang];
+
+  const icons = [
+    (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+      </svg>
+    ),
+    (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+    ),
+    (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+    (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+    (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+      </svg>
+    ),
+    (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    )
   ];
+
+  const timelineItems = current.items.map((item, idx) => ({
+    ...item,
+    icon: icons[idx]
+  }));
 
   return (
     <section id="services" ref={containerRef} className="py-32 bg-[#0B1624] text-white px-6 md:px-12 relative overflow-hidden">
@@ -102,7 +166,7 @@ const Roadmap = () => {
             viewport={{ once: true, margin: '-100px' }}
             className="text-[var(--accent)] font-semibold tracking-widest uppercase mb-3 text-sm"
           >
-            Core Capabilities
+            {current.sectionTitle}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -111,7 +175,7 @@ const Roadmap = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-none"
           >
-            Our Construction <span className="text-[var(--accent)]">Services.</span>
+            {current.title} <span className="text-[var(--accent)]">{current.titleAccent}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -120,7 +184,7 @@ const Roadmap = () => {
             transition={{ delay: 0.2 }}
             className="text-lg text-[var(--secondary-text)] mt-6 leading-relaxed"
           >
-            NEXAT delivers a unified project workflow, transforming ambitious visions into high-performing, certified corporate and residential landmarks.
+            {current.desc}
           </motion.p>
         </div>
 
@@ -187,6 +251,7 @@ const Roadmap = () => {
 
 // Subcomponent for Timeline Card
 const TimelineCard = ({ item, isEven, index }) => {
+  const { isRtl } = useLanguage();
   return (
     <motion.div
       initial={{ opacity: 0, x: isEven ? -45 : 45, y: 15 }}
@@ -203,13 +268,13 @@ const TimelineCard = ({ item, isEven, index }) => {
           z: 15,
         }}
         transition={{ type: 'spring', stiffness: 250, damping: 25 }}
-        className="bg-[#13263A]/30 backdrop-blur-sm border border-white/5 rounded-[1.5rem] p-6 md:p-8 flex flex-col gap-4 text-left relative overflow-hidden group cursor-pointer hover:border-[var(--accent)]/30 hover:bg-[#13263A]/50 transition-all duration-300"
+        className={`bg-[#13263A]/30 backdrop-blur-sm border border-white/5 rounded-[1.5rem] p-6 md:p-8 flex flex-col gap-4 relative overflow-hidden group cursor-pointer hover:border-[var(--accent)]/30 hover:bg-[#13263A]/50 transition-all duration-300 ${isRtl ? 'text-right' : 'text-left'}`}
       >
         {/* Soft glow */}
         <div className="absolute -top-12 -right-12 w-24 h-24 bg-[#DA9A62]/3 rounded-full blur-2xl pointer-events-none" />
 
         {/* Card Header (Phase & Icon) */}
-        <div className="flex items-center justify-between gap-4">
+        <div className={`flex items-center justify-between gap-4 ${isRtl ? 'flex-row-reverse' : ''}`}>
           <span className="font-black text-[var(--accent)] text-3xl tracking-tight leading-none">
             {item.phase}
           </span>

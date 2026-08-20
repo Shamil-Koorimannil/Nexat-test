@@ -1,67 +1,179 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const projects = [
-  {
-    id: 'zenith-tower',
-    city: 'London, UK',
-    category: 'Commercial Skyscraper',
-    name: 'The Zenith Tower',
-    tagline: 'A structural testament to vertical steel geometries and double-glazed acoustics.',
-    area: '120,000 sq. m.',
-    height: '320 meters',
-    certification: 'BREEAM Outstanding',
-    image: '/project_tower.png',
-  },
-  {
-    id: 'aurelia-villa',
-    city: 'Beverly Hills, USA',
-    category: 'Luxury Residential',
-    name: 'Aurelia Estate',
-    tagline: 'Seamless integration of exposed board-formed concrete, cantilevered steel, and local quartzites.',
-    area: '2,400 sq. m.',
-    height: '3 Levels',
-    certification: 'Net Zero Carbon',
-    image: '/project_villa.png',
-  },
-  {
-    id: 'meridian-civic',
-    city: 'Tokyo, Japan',
-    category: 'Public Infrastructure',
-    name: 'Meridian Center',
-    tagline: 'Organic steel trusses supporting massive high-span structural glass geometries.',
-    area: '45,000 sq. m.',
-    height: '85m Columnless Span',
-    certification: 'LEED Platinum',
-    image: '/project_civic.png',
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 const ShopsGallery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const { lang, isRtl } = useLanguage();
 
-  useEffect(() => {
-    if (!isAutoPlay) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % projects.length);
-    }, 6000); // Change every 6 seconds
+  const translations = {
+    en: {
+      subtitle: 'Portfolio of Experience',
+      title: 'Structural',
+      titleAccent: 'Engagements.',
+      desc: 'Exploring our history of professional on-site execution, infrastructure coordination, and large-scale project development across key structural domains.',
+      labelCode: 'Project Code',
+      labelCategory: 'Classification',
+      labelRegion: 'Execution Region',
+      labelStandard: 'Target Standard',
+      labelSpecs: 'Technical Specs',
+      projects: [
+        {
+          num: '01',
+          name: 'Golden Butterfly Construction',
+          category: 'Construction & Development',
+          desc: 'A construction project involving on-site execution, structural works, and coordinated development, delivered with a focus on quality, precision, and reliable workmanship.',
+          code: 'NXT-01-GBC',
+          region: 'Riyadh Province, KSA',
+          standard: 'SASO Standard',
+          specs: 'C50/60 Reinforced Concrete Casting'
+        },
+        {
+          num: '02',
+          name: 'Al Hufi Contracting Limited',
+          category: 'Contracting & Infrastructure',
+          desc: 'A contracting and construction project covering site development, infrastructure-related activities, and coordinated execution to meet project requirements and quality standards.',
+          code: 'NXT-02-AHC',
+          region: 'Eastern Province, KSA',
+          standard: 'Class-A Contracting Code',
+          specs: 'High-Density Sub-Surface Infrastructure'
+        },
+        {
+          num: '03',
+          name: 'Six Flags Saudi Arabia',
+          category: 'Large-Scale Destination Development',
+          desc: 'A major destination development project involving large-scale construction activities, infrastructure works, utility installations, and complex site coordination.',
+          code: 'NXT-03-SFS',
+          region: 'Qiddiya (Riyadh), KSA',
+          standard: 'International Building Code (IBC)',
+          specs: 'Heavy Structural Foundations & Anchors'
+        },
+        {
+          num: '04',
+          name: 'Hassan Alam Construction',
+          category: 'Construction Execution',
+          desc: 'A construction project involving professional site operations, structural development, and coordinated project execution across key stages of the build.',
+          code: 'NXT-04-HAC',
+          region: 'Central Region, KSA',
+          standard: 'ASTM Structural Standards',
+          specs: 'Pre-cast Steel Geometry & Truss Framing'
+        },
+        {
+          num: '05',
+          name: 'Elegancia Arabia',
+          category: 'Construction & Development',
+          desc: 'A project focused on high-quality construction and development works, combining efficient execution, attention to detail, and adherence to project specifications.',
+          code: 'NXT-05-ELA',
+          region: 'Western Province, KSA',
+          standard: 'Grade-1 Quality Specification',
+          specs: 'GFRC Facades & Premium Finishes'
+        },
+        {
+          num: '06',
+          name: 'Ladtech International',
+          category: 'International Construction',
+          desc: 'An international construction project involving organized site execution, infrastructure and development activities, and professional coordination to support successful project delivery.',
+          code: 'NXT-06-LDT',
+          region: 'GCC & International',
+          standard: 'ISO 9001:2015 Execution',
+          specs: 'Multi-National Logistical Coordination'
+        }
+      ]
+    },
+    ar: {
+      subtitle: 'سجل الخبرات والاعتمادات',
+      title: 'سابقة أعمال',
+      titleAccent: 'الإنشاءات.',
+      desc: 'نستعرض هنا تاريخنا الحافل بالتنفيذ الموقعي الاحترافي، وتنسيق البنية التحتية، وتطوير المشاريع الكبرى عبر مختلف التخصصات الإنشائية.',
+      labelCode: 'رمز المشروع',
+      labelCategory: 'التصنيف الإنشائي',
+      labelRegion: 'منطقة التنفيذ',
+      labelStandard: 'المعيار المعتمد',
+      labelSpecs: 'المواصفات الفنية',
+      projects: [
+        {
+          num: '٠١',
+          name: 'شركة الفراشة الذهبية للمقاولات',
+          category: 'الإنشاءات والتطوير',
+          desc: 'مشروع إنشائي يشمل التنفيذ الموقعي والأعمال الإنشائية والتطوير المنسق، تم تقديمه بتركيز عالٍ على الجودة والدقة والعمل الموثوق.',
+          code: 'NXT-01-GBC',
+          region: 'منطقة الرياض، المملكة العربية السعودية',
+          standard: 'مواصفات الهيئة السعودية (SASO)',
+          specs: 'صب خرسانات مسلحة ثقيلة C50/60'
+        },
+        {
+          num: '٠٢',
+          name: 'شركة الحوفي للمقاولات المحدودة',
+          category: 'المقاولات والبنية التحتية',
+          desc: 'مشروع مقاولات وإنشاءات يغطي تطوير الموقع، والأنشطة المتعلقة بالبنية التحتية، والتنفيذ المنسق لتلبية متطلبات المشروع ومعايير الجودة.',
+          code: 'NXT-02-AHC',
+          region: 'المنطقة الشرقية، المملكة العربية السعودية',
+          standard: 'كود المقاولات من الفئة الممتازة (Class-A)',
+          specs: 'البنية التحتية الأرضية عالية الكثافة'
+        },
+        {
+          num: '٠٣',
+          name: 'سيكس فلاغز السعودية',
+          category: 'تطوير الوجهات الكبرى',
+          desc: 'مشروع تطوير وجهة ترفيهية رئيسية يتضمن أنشطة إنشائية واسعة النطاق، وأعمال البنية التحتية، وتركيبات المرافق، والتنسيق المعقد للموقع.',
+          code: 'NXT-03-SFS',
+          region: 'القدية (الرياض)، المملكة العربية السعودية',
+          standard: 'كود البناء الدولي (IBC)',
+          specs: 'أساسات هيكلية ثقيلة ومرابط تدعيم للأحمال'
+        },
+        {
+          num: '٠٤',
+          name: 'حسن علام للإنشاءات',
+          category: 'تنفيذ الإنشاءات',
+          desc: 'مشروع إنشائي يتضمن عمليات الموقع الاحترافية، والتطوير الهيكلي، والتنفيذ المنسق للمشروع عبر المراحل الرئيسية للبناء.',
+          code: 'NXT-04-HAC',
+          region: 'المنطقة الوسطى، المملكة العربية السعودية',
+          standard: 'المواصفات القياسية الإنشائية (ASTM)',
+          specs: 'هياكل حديدية مسبقة الصب وإطارات دعامية'
+        },
+        {
+          num: '٠٥',
+          name: 'إليغانسيا أرابيا',
+          category: 'الإنشاءات والتطوير',
+          desc: 'مشروع يركز على أعمال البناء والتطوير عالية الجودة، ويجمع بين التنفيذ الفعال والاهتمام بالتفاصيل والالتزام بمواصفات المشروع.',
+          code: 'NXT-05-ELA',
+          region: 'المنطقة الغربية، المملكة العربية السعودية',
+          standard: 'معيار الجودة من الفئة الأولى',
+          specs: 'واجهات GFRC وتشطيبات فاخرة مخصصة'
+        },
+        {
+          num: '٠٦',
+          name: 'لادتك العالمية',
+          category: 'الإنشاءات الدولية',
+          desc: 'مشروع بناء دولي يتضمن تنفيذاً منظماً للموقع، وأنشطة البنية التحتية والتطوير، والتنسيق المهني لدعم تسليم المشروع بنجاح.',
+          code: 'NXT-06-LDT',
+          region: 'الخليج العربي والمستوى الدولي',
+          standard: 'إدارة جودة التنفيذ ISO 9001:2015',
+          specs: 'تنسيق لوجستي عابر للحدود ومتعدد الجنسيات'
+        }
+      ]
+    }
+  };
 
-    return () => clearInterval(interval);
-  }, [isAutoPlay]);
-
-  const activeProject = projects[activeIndex];
+  const current = translations[lang];
+  const projects = current.projects;
 
   return (
-    <section id="projects" className="py-32 bg-[#0B1624] text-white px-6 md:px-12 relative overflow-hidden border-t border-white/5">
-      {/* Background Decor */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#DA9A62]/3 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#DA9A62]/3 rounded-full blur-[140px] pointer-events-none"></div>
+    <section id="projects" className="py-32 bg-[#0B1624] text-white px-6 md:px-12 relative overflow-hidden border-t border-white/5 select-none">
+      
+      {/* Blueprint Grid Overlay */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(var(--accent) 1px, transparent 1px)`,
+          backgroundSize: '24px 24px'
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+        <div className={`flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-6 ${isRtl ? 'md:flex-row-reverse text-right' : 'text-left'}`}>
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -69,7 +181,7 @@ const ShopsGallery = () => {
               viewport={{ once: true }}
               className="text-[var(--accent)] font-semibold tracking-widest uppercase mb-3 text-sm"
             >
-              Signature Portfolio
+              {current.subtitle}
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -78,7 +190,7 @@ const ShopsGallery = () => {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-6xl font-black tracking-tight uppercase leading-none"
             >
-              Featured <br /><span className="text-[var(--accent)]">Architectures.</span>
+              {current.title} <br /><span className="text-[var(--accent)]">{current.titleAccent}</span>
             </motion.h2>
           </div>
           <motion.p
@@ -86,142 +198,101 @@ const ShopsGallery = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-[var(--secondary-text)] max-w-md leading-relaxed"
+            className={`text-lg text-[var(--secondary-text)] max-w-md leading-relaxed ${isRtl ? 'text-right' : 'text-left'}`}
           >
-            Explore our curated construction portfolio, displaying engineering rigor and architectural luxury across major metropolitan hubs.
+            {current.desc}
           </motion.p>
         </div>
 
-        {/* Main Showcase Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
-          
-          {/* Left: Active Project Image Showcase */}
-          <div className="lg:col-span-7 relative h-[350px] md:h-[500px] rounded-[1.5rem] overflow-hidden shadow-2xl bg-[#13263A]/20 border border-white/5">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeProject.id}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <img
-                  src={activeProject.image}
-                  alt={activeProject.name}
-                  className="w-full h-full object-cover select-none pointer-events-none"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624] via-[#0B1624]/20 to-transparent opacity-85" />
-              </motion.div>
-            </AnimatePresence>
+        {/* Projects Accordion List Container */}
+        <div className={`flex flex-col gap-6 ${isRtl ? 'direction-rtl' : ''}`}>
+          {projects.map((project, idx) => {
+            const isActive = idx === activeIndex;
 
-            {/* Quick Status Badge */}
-            <div className="absolute top-6 left-6 z-20 flex items-center gap-2 bg-[var(--accent)] text-[#0B1624] font-bold px-4 py-2 rounded-full shadow-lg text-xs uppercase tracking-wider">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0B1624] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0B1624]"></span>
-              </span>
-              Completed Project
-            </div>
-          </div>
-
-          {/* Right: Active Project Specs & Metrics */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-[#13263A] text-white rounded-[1.5rem] p-8 md:p-12 relative overflow-hidden shadow-xl border border-white/5">
-            <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-[#DA9A62]/3 rounded-full blur-[50px] pointer-events-none" />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeProject.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
-                className="flex flex-col h-full justify-between gap-8 relative z-10"
-              >
-                <div>
-                  <span className="text-xs font-semibold text-[var(--accent)] bg-[#0B1624] px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block mb-6 border border-white/5">
-                    {activeProject.category}
-                  </span>
-                  
-                  <h3 className="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-tight">
-                    {activeProject.name}
-                  </h3>
-                  
-                  <p className="text-lg text-[var(--secondary-text)] italic mb-6 leading-relaxed">
-                    "{activeProject.tagline}"
-                  </p>
-                  
-                  <div className="space-y-4 border-t border-white/5 pt-6 text-base text-[var(--secondary-text)]">
-                    <div className="flex justify-between py-1.5 border-b border-white/5">
-                      <span className="font-medium text-white/55">Location:</span>
-                      <span className="font-semibold text-white">{activeProject.city}</span>
-                    </div>
-                    <div className="flex justify-between py-1.5 border-b border-white/5">
-                      <span className="font-medium text-white/55">Total Area:</span>
-                      <span className="font-semibold text-white">{activeProject.area}</span>
-                    </div>
-                    <div className="flex justify-between py-1.5 border-b border-white/5">
-                      <span className="font-medium text-white/55">Key Metric:</span>
-                      <span className="font-semibold text-white">{activeProject.height}</span>
-                    </div>
-                    <div className="flex justify-between py-1.5">
-                      <span className="font-medium text-white/55">Certification:</span>
-                      <span className="font-semibold text-[var(--accent)]">{activeProject.certification}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-6">
-                  <a
-                    href="#contact"
-                    onClick={() => setIsAutoPlay(false)}
-                    className="inline-flex items-center justify-between w-full sm:w-auto bg-[#0B1624] text-white border border-white/10 hover:border-[var(--accent)] px-8 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg group text-base uppercase tracking-wider"
-                  >
-                    <span>Request Case Study</span>
-                    <span className="transform group-hover:translate-x-1 transition-transform duration-300 ml-4 text-[var(--accent)]">→</span>
-                  </a>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Project Selector Thumbnails */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {projects.map((project, index) => {
-            const isActive = index === activeIndex;
             return (
-              <motion.button
-                key={project.id}
-                onClick={() => {
-                  setActiveIndex(index);
-                  setIsAutoPlay(false);
-                }}
-                className={`relative h-28 rounded-xl overflow-hidden text-left transition-all duration-300 border ${
-                  isActive ? 'border-[var(--accent)] shadow-lg shadow-[#DA9A62]/10 scale-[1.01]' : 'border-white/5 hover:border-white/20 opacity-70 hover:opacity-100'
+              <motion.div
+                key={project.code}
+                onMouseEnter={() => setActiveIndex(idx)}
+                onClick={() => setActiveIndex(idx)}
+                className={`relative p-6 md:p-8 rounded-[1.5rem] border transition-all duration-500 cursor-pointer group flex flex-col justify-between ${
+                  isActive 
+                    ? 'bg-[#13263A]/40 border-[var(--accent)] shadow-2xl shadow-[#DA9A62]/5' 
+                    : 'bg-transparent border-white/5 hover:border-white/20'
                 }`}
-                whileHover={{ y: -3 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                style={{ perspective: 1000 }}
               >
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${isActive ? 'from-[#0B1624]/95 via-[#0B1624]/80' : 'from-black/90 via-black/50'} transition-all`} />
                 
-                <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-col justify-end">
-                  <span className="text-[10px] uppercase font-semibold tracking-wider text-[var(--accent)] mb-0.5">
-                    {project.city}
-                  </span>
-                  <span className="text-sm font-black leading-tight uppercase tracking-tight text-white">
-                    {project.name}
-                  </span>
+                {/* Active Highlight Line Accent */}
+                <motion.div
+                  className={`absolute top-0 bottom-0 w-[3px] bg-[var(--accent)] ${isRtl ? 'right-0' : 'left-0'}`}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: isActive ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+
+                {/* Layout Wrapper */}
+                <div className={`flex items-start justify-between gap-6 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                  
+                  {/* Main textual contents */}
+                  <div className="space-y-3 flex-1">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent)] bg-[#0B1624]/60 px-3 py-1 rounded-full border border-white/5 inline-block">
+                      {project.category}
+                    </span>
+                    
+                    <h3 className={`text-xl md:text-2xl font-black text-white transition-colors duration-300 group-hover:text-[var(--accent)] ${isRtl ? 'text-right' : 'text-left'}`}>
+                      {project.name}
+                    </h3>
+
+                    {/* Animated description expansion */}
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ 
+                        height: isActive ? 'auto' : 0, 
+                        opacity: isActive ? 1 : 0 
+                      }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className={`text-base text-[var(--secondary-text)] leading-relaxed mt-4 pt-4 border-t border-white/5 font-sans ${isRtl ? 'text-right' : 'text-left'}`}>
+                        {project.desc}
+                      </p>
+                      
+                      {/* Integrated technical metadata parameter sheet */}
+                      <div className={`mt-6 pt-4 border-t border-white/5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-sans ${isRtl ? 'text-right' : 'text-left'}`}>
+                        <div>
+                          <span className="text-white/40 block mb-0.5">{current.labelCode}</span>
+                          <span className="text-white font-mono">{project.code}</span>
+                        </div>
+                        <div>
+                          <span className="text-white/40 block mb-0.5">{current.labelRegion}</span>
+                          <span className="text-white">{project.region}</span>
+                        </div>
+                        <div>
+                          <span className="text-white/40 block mb-0.5">{current.labelStandard}</span>
+                          <span className="text-[var(--accent)] font-semibold">{project.standard}</span>
+                        </div>
+                        <div>
+                          <span className="text-white/40 block mb-0.5">{current.labelSpecs}</span>
+                          <span className="text-white block max-w-full truncate">{project.specs}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Architectural Numbering */}
+                  <div className="flex-shrink-0">
+                    <span className="font-mono text-4xl md:text-5xl font-light text-white/5 transition-colors duration-300 group-hover:text-[var(--accent)]/15">
+                      {project.num}
+                    </span>
+                  </div>
+
                 </div>
-              </motion.button>
+
+              </motion.div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

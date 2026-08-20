@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -174,7 +175,9 @@ const ProductCarouselHero = () => {
     }
   };
 
-  // 1. Mobile Landing Page geometric layout
+  const { lang } = useLanguage();
+
+  // 1. Mobile Geometric Layout
   if (isMobile) {
     return (
       <section 
@@ -183,12 +186,12 @@ const ProductCarouselHero = () => {
       >
         {/* Scroll down text in the padding space (left vertical margin) */}
         <motion.div 
-          className="absolute left-6 bottom-24 origin-bottom-left -rotate-90 text-[10px] uppercase tracking-[0.25em] text-white/45 font-bold select-none z-10 pointer-events-none"
+          className={`absolute bottom-24 origin-bottom-left -rotate-90 text-[10px] uppercase tracking-[0.25em] text-white/45 font-bold select-none z-10 pointer-events-none ${lang === 'ar' ? 'right-6' : 'left-6'}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          Scroll Down &rarr;
+          {lang === 'ar' ? '← مرر للأسفل' : 'Scroll Down →'}
         </motion.div>
 
         {/* SVG Geometric Container */}
@@ -263,7 +266,7 @@ const ProductCarouselHero = () => {
                 letterSpacing="0.08em"
                 className="select-none pointer-events-none"
               >
-                SCROLL
+                {lang === 'ar' ? 'مرر' : 'SCROLL'}
               </text>
               <text 
                 x="80" 
@@ -276,7 +279,7 @@ const ProductCarouselHero = () => {
                 letterSpacing="0.08em"
                 className="select-none pointer-events-none"
               >
-                DOWN
+                {lang === 'ar' ? 'للأسفل' : 'DOWN'}
               </text>
             </g>
           </svg>
@@ -298,20 +301,20 @@ const ProductCarouselHero = () => {
       {/* Bottom Editorial Caption */}
       <div 
         ref={captionRef}
-        className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-baseline gap-4 border-t border-white/10 pt-8 z-10"
+        className={`w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-baseline gap-4 border-t border-white/10 pt-8 z-10 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
       >
         <h1 
           className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight"
           style={{ fontFamily: 'Darker Grotesque' }}
         >
-          Engineering Excellence.
+          {lang === 'ar' ? 'التميز الهندسي.' : 'Engineering Excellence.'}
         </h1>
         
         <h2
           className="text-xl md:text-2xl text-[var(--accent)] font-semibold uppercase tracking-[0.12em]"
           style={{ fontFamily: 'Darker Grotesque' }}
         >
-          Building the Future.
+          {lang === 'ar' ? 'بناء المستقبل.' : 'Building the Future.'}
         </h2>
       </div>
 
@@ -320,7 +323,7 @@ const ProductCarouselHero = () => {
         className="scroll-indicator absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 select-none pointer-events-none"
       >
         <span className="text-[10px] tracking-[0.25em] font-medium text-white/40 uppercase">
-          Scroll Down
+          {lang === 'ar' ? 'مرر للأسفل' : 'Scroll Down'}
         </span>
         <div className="w-[20px] h-[34px] border border-white/20 rounded-full flex justify-center pt-2 backdrop-blur-[1px]">
           <motion.div 

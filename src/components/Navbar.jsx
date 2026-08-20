@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import NexatLogo from './NexatLogo';
+import { useLanguage } from '../context/LanguageContext';
 
 const PlusIcon = ({ size, className }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -11,6 +12,7 @@ const PlusIcon = ({ size, className }) => (
 );
 
 const Navbar = () => {
+  const { lang, setLang, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -62,46 +64,54 @@ const Navbar = () => {
           </a>
 
           {/* Centered Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center space-x-10 text-[13px] tracking-[0.18em] font-medium uppercase text-[var(--secondary-text)]">
+          <div className={`hidden md:flex items-center text-[13px] tracking-[0.18em] font-medium uppercase text-[var(--secondary-text)] ${lang === 'ar' ? 'space-x-reverse space-x-10' : 'space-x-10'}`}>
             <a 
               href="#about" 
               onClick={(e) => handleScrollTo(e, 'about')} 
               className="hover:text-[var(--accent)] transition-colors duration-300"
             >
-              Company
+              {t('nav.company')}
             </a>
             <a 
               href="#services" 
               onClick={(e) => handleScrollTo(e, 'services')} 
               className="hover:text-[var(--accent)] transition-colors duration-300"
             >
-              Services
+              {t('nav.services')}
             </a>
             <a 
               href="#projects" 
               onClick={(e) => handleScrollTo(e, 'projects')} 
               className="hover:text-[var(--accent)] transition-colors duration-300"
             >
-              Projects
+              {t('nav.projects')}
             </a>
             <a 
               href="#contact" 
               onClick={(e) => handleScrollTo(e, 'contact')} 
               className="hover:text-[var(--accent)] transition-colors duration-300"
             >
-              Contact
+              {t('nav.contact')}
             </a>
           </div>
 
-          {/* CTA Connect Button - Right */}
-          <div className="hidden md:flex items-center">
+          {/* CTA Connect Button & Language Toggle - Right */}
+          <div className={`hidden md:flex items-center ${lang === 'ar' ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
+            <button
+              onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+              className="border border-white/10 text-white hover:border-[var(--accent)] hover:text-[var(--accent)] px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.15em] font-semibold transition-all duration-300 cursor-pointer"
+            >
+              {lang === 'en' ? 'العربية' : 'EN'}
+            </button>
             <a 
               href="#contact" 
               onClick={(e) => handleScrollTo(e, 'contact')}
               className="group flex items-center gap-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-[#0B1624] px-5 py-2.5 rounded-full text-[13px] uppercase tracking-[0.18em] font-medium transition-all duration-300"
             >
-              <span>Connect</span>
-              <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <span>{t('nav.connect')}</span>
+              <span className={`transform transition-transform duration-300 ${lang === 'ar' ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}>
+                {lang === 'ar' ? '←' : '→'}
+              </span>
             </a>
           </div>
 
@@ -126,44 +136,54 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-20 left-0 w-full bg-[#0B1624]/95 backdrop-blur-lg border-b border-white/5 z-[99] flex flex-col p-6 space-y-4 md:hidden text-[13px] tracking-[0.18em] font-medium uppercase text-[var(--secondary-text)]"
+            className={`fixed top-20 left-0 w-full bg-[#0B1624]/95 backdrop-blur-lg border-b border-white/5 z-[99] flex flex-col p-6 space-y-4 md:hidden text-[13px] tracking-[0.18em] font-medium uppercase text-[var(--secondary-text)] ${lang === 'ar' ? 'text-right' : 'text-left'}`}
           >
             <a 
               href="#about" 
               onClick={(e) => handleScrollTo(e, 'about')} 
               className="py-2 border-b border-white/5 hover:text-[var(--accent)] transition-colors"
             >
-              Company
+              {t('nav.company')}
             </a>
             <a 
               href="#services" 
               onClick={(e) => handleScrollTo(e, 'services')} 
               className="py-2 border-b border-white/5 hover:text-[var(--accent)] transition-colors"
             >
-              Services
+              {t('nav.services')}
             </a>
             <a 
               href="#projects" 
               onClick={(e) => handleScrollTo(e, 'projects')} 
               className="py-2 border-b border-white/5 hover:text-[var(--accent)] transition-colors"
             >
-              Projects
+              {t('nav.projects')}
             </a>
             <a 
               href="#contact" 
               onClick={(e) => handleScrollTo(e, 'contact')} 
               className="py-2 border-b border-white/5 hover:text-[var(--accent)] transition-colors"
             >
-              Contact
+              {t('nav.contact')}
             </a>
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col gap-3">
               <a 
                 href="#contact" 
                 onClick={(e) => handleScrollTo(e, 'contact')}
                 className="flex items-center justify-center gap-2 border border-[var(--accent)] text-[var(--accent)] py-3 rounded-full uppercase tracking-[0.18em]"
               >
-                Connect →
+                <span>{t('nav.connect')}</span>
+                <span>{lang === 'ar' ? '←' : '→'}</span>
               </a>
+              <button
+                onClick={() => {
+                  setLang(lang === 'en' ? 'ar' : 'en');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="border border-white/10 text-white py-3 rounded-full uppercase tracking-[0.18em] font-semibold cursor-pointer"
+              >
+                {lang === 'en' ? 'العربية' : 'English'}
+              </button>
             </div>
           </motion.div>
         )}
