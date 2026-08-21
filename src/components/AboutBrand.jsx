@@ -50,7 +50,7 @@ const AboutBrand = () => {
       {/* Decorative ambient light */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#DA9A62]/3 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10 items-center">
         
         {/* Left Column - CEO Message & Overview */}
         <div className={`flex flex-col justify-center ${isRtl ? 'text-right' : 'text-left'}`}>
@@ -105,46 +105,75 @@ const AboutBrand = () => {
           </motion.p>
         </div>
 
-        {/* Right Column: Mission, Vision, Values */}
-        <div className="space-y-12 flex flex-col justify-center">
-          <motion.div 
-            initial={{ opacity: 0, x: isRtl ? -30 : 30 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true }}
-            className="p-6 md:p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.05)] transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold mb-3 text-[#0B1624] uppercase tracking-tight">{current.missionTitle}</h3>
-            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
+        {/* Right Column - Premium Construction Site Image */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "power2.out" }}
+          className="relative w-full h-[400px] md:h-[550px] rounded-[2rem] overflow-hidden border border-[#0B1624]/10 shadow-[0_20px_40px_rgba(11,22,36,0.03)] group"
+        >
+          <img 
+            src="/project_tower.png" 
+            alt="NEXAT Construction Site" 
+            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+          {/* Elegant ambient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624]/15 to-transparent pointer-events-none" />
+        </motion.div>
+
+      </div>
+
+      {/* Mission, Vision, Values - Clean 3-column cards grid below the CEO message */}
+      <div className="max-w-7xl mx-auto mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        
+        {/* Mission Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }}
+          className="p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.01)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.03)] transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h3 className={`text-2xl font-bold mb-4 text-[#0B1624] uppercase tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>{current.missionTitle}</h3>
+            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0 text-right' : 'border-l-2 text-left'}`}>
               {current.missionText}
             </p>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: isRtl ? -30 : 30 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true }} 
-            transition={{ delay: 0.1 }}
-            className="p-6 md:p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.05)] transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold mb-3 text-[#0B1624] uppercase tracking-tight">{current.visionTitle}</h3>
-            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
+        {/* Vision Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ delay: 0.1 }}
+          className="p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.01)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.03)] transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h3 className={`text-2xl font-bold mb-4 text-[#0B1624] uppercase tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>{current.visionTitle}</h3>
+            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0 text-right' : 'border-l-2 text-left'}`}>
               {current.visionText}
             </p>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: isRtl ? -30 : 30 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true }} 
-            transition={{ delay: 0.2 }}
-            className="p-6 md:p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.02)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.05)] transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold mb-3 text-[#0B1624] uppercase tracking-tight">{current.valuesTitle}</h3>
-            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0' : 'border-l-2'}`}>
+        {/* Values Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ delay: 0.2 }}
+          className="p-8 rounded-[1.5rem] bg-white border border-[#0B1624]/10 shadow-[0_4px_20px_rgba(11,22,36,0.01)] hover:border-[#DA9A62]/40 hover:shadow-[0_10px_30px_rgba(11,22,36,0.03)] transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h3 className={`text-2xl font-bold mb-4 text-[#0B1624] uppercase tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>{current.valuesTitle}</h3>
+            <p className={`text-base text-[#2C374E] leading-relaxed border-[var(--accent)] pl-4 ${isRtl ? 'border-r-2 border-l-0 pr-4 pl-0 text-right' : 'border-l-2 text-left'}`}>
               {current.valuesText}
             </p>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
