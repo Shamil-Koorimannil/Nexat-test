@@ -74,74 +74,95 @@ const GSAPScrollSection = () => {
       >
 
         {/* Panel 1: Precision Engineering */}
-        <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0">
-          {/* Immersive Background Image */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <img 
-              src="/six_flags_showcase.png" 
-              alt="Precision Engineering Background" 
-              className="w-full h-full object-cover transform scale-105 opacity-40"
-            />
-            {/* Blending Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624] via-[#0B1624]/90 to-[#0B1624]/75 pointer-events-none" />
-          </div>
+        <div className="panel w-full md:w-screen h-screen flex items-center justify-center p-8 md:p-16 relative flex-shrink-0">
+          <div className={`max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center ${isRtl ? 'md:flex-row-reverse' : ''}`}>
+            
+            {/* Text Column */}
+            <div className={`space-y-6 ${isRtl ? 'text-right' : 'text-left'}`}>
+              <h2 className="text-4xl md:text-6xl font-black text-[var(--accent)] uppercase leading-none tracking-tight whitespace-pre-line">
+                {current.panel1.title}
+              </h2>
+              <p className="text-lg md:text-xl font-sans text-[var(--secondary-text)] leading-relaxed">
+                {current.panel1.desc}
+              </p>
+            </div>
+            
+            {/* Small Image Column */}
+            <div className="relative w-full aspect-[4/3] max-w-lg mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
+              <img 
+                src="/six_flags_showcase.png" 
+                alt="Precision Engineering Site" 
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624]/30 to-transparent pointer-events-none" />
+            </div>
 
-          {/* Content */}
-          <div className="relative z-10 text-center max-w-4xl px-4 space-y-6">
-            <h2 className="text-5xl md:text-8xl font-black text-[var(--accent)] uppercase leading-none tracking-tight whitespace-pre-line">
-              {current.panel1.title}
-            </h2>
-            <p className="text-xl md:text-2xl font-sans text-[var(--secondary-text)] mt-4 leading-relaxed max-w-2xl mx-auto">
-              {current.panel1.desc}
-            </p>
+          </div>
+          
+          <div className="absolute -z-10 opacity-5 transform -rotate-12 scale-150">
+            <div className="w-96 h-[800px] bg-[#DA9A62]/20 rounded-full blur-3xl"></div>
           </div>
         </div>
 
         {/* Panel 2: Sustainable Architecture */}
-        <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0 bg-[#13263A]/10">
-          {/* Immersive Background Image */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <img 
-              src="/project_civic.png" 
-              alt="Sustainable Architecture Background" 
-              className="w-full h-full object-cover transform scale-105 opacity-40"
-            />
-            {/* Blending Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624] via-[#0B1624]/90 to-[#0B1624]/75 pointer-events-none" />
-          </div>
+        <div className="panel w-full md:w-screen h-screen flex items-center justify-center p-8 md:p-16 relative flex-shrink-0 bg-[#13263A]/10">
+          <div className={`max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center ${isRtl ? 'md:flex-row-reverse' : ''}`}>
+            
+            {/* Small Image Column (Alternated: Left side on LTR, Right side on RTL) */}
+            <div className={`relative w-full aspect-[4/3] max-w-lg mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl group ${isRtl ? 'md:order-last' : 'md:order-first'}`}>
+              <img 
+                src="/project_civic.png" 
+                alt="Sustainable Architecture Site" 
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624]/30 to-transparent pointer-events-none" />
+            </div>
 
-          {/* Content */}
-          <div className="relative z-10 text-center max-w-4xl px-4 space-y-6">
-            <h2 className="text-5xl md:text-8xl font-black text-white uppercase leading-none tracking-tight whitespace-pre-line">
-              {current.panel2.title}
-            </h2>
-            <p className="text-xl md:text-2xl font-sans text-[var(--secondary-text)] mt-4 leading-relaxed max-w-2xl mx-auto">
-              {current.panel2.desc}
-            </p>
+            {/* Text Column */}
+            <div className={`space-y-6 ${isRtl ? 'text-right' : 'text-left'}`}>
+              <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-none tracking-tight whitespace-pre-line">
+                {current.panel2.title}
+              </h2>
+              <p className="text-lg md:text-xl font-sans text-[var(--secondary-text)] leading-relaxed">
+                {current.panel2.desc}
+              </p>
+            </div>
+
+          </div>
+          
+          <div className="absolute -z-10 opacity-5 transform rotate-12 scale-110 translate-y-20">
+            <div className="w-80 h-[800px] bg-[#DA9A62]/20 rounded-full blur-3xl"></div>
           </div>
         </div>
 
         {/* Panel 3: Luxury Living */}
-        <div className="panel w-full md:w-screen h-screen flex flex-col items-center justify-center p-8 relative flex-shrink-0">
-          {/* Immersive Background Image */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <img 
-              src="/project_villa.png" 
-              alt="Luxury Living Background" 
-              className="w-full h-full object-cover transform scale-105 opacity-40"
-            />
-            {/* Blending Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624] via-[#0B1624]/90 to-[#0B1624]/75 pointer-events-none" />
-          </div>
+        <div className="panel w-full md:w-screen h-screen flex items-center justify-center p-8 md:p-16 relative flex-shrink-0">
+          <div className={`max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center ${isRtl ? 'md:flex-row-reverse' : ''}`}>
+            
+            {/* Text Column */}
+            <div className={`space-y-6 ${isRtl ? 'text-right' : 'text-left'}`}>
+              <h2 className="text-4xl md:text-6xl font-black text-[var(--accent)] uppercase leading-none tracking-tight whitespace-pre-line">
+                {current.panel3.title}
+              </h2>
+              <p className="text-lg md:text-xl font-sans text-[var(--secondary-text)] leading-relaxed">
+                {current.panel3.desc}
+              </p>
+            </div>
+            
+            {/* Small Image Column */}
+            <div className="relative w-full aspect-[4/3] max-w-lg mx-auto rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
+              <img 
+                src="/project_villa.png" 
+                alt="Luxury Living Architecture" 
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624]/30 to-transparent pointer-events-none" />
+            </div>
 
-          {/* Content */}
-          <div className="relative z-10 text-center max-w-4xl px-4 space-y-6">
-            <h2 className="text-5xl md:text-8xl font-black text-[var(--accent)] uppercase leading-none tracking-tight whitespace-pre-line">
-              {current.panel3.title}
-            </h2>
-            <p className="text-xl md:text-2xl font-sans text-[var(--secondary-text)] mt-4 leading-relaxed max-w-2xl mx-auto">
-              {current.panel3.desc}
-            </p>
+          </div>
+          
+          <div className="absolute -z-10 opacity-5 transform -rotate-6 scale-125">
+            <div className="w-96 h-[800px] bg-[#DA9A62]/10 rounded-full blur-3xl"></div>
           </div>
         </div>
 
