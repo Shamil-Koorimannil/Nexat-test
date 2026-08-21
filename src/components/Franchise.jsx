@@ -69,7 +69,7 @@ const Franchise = () => {
     setStatus('loading');
     
     try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "97e74fb1-d54a-4499-b430-e2f94035162e";
       
       const formDataToSend = new FormData();
       formDataToSend.append("access_key", accessKey);
