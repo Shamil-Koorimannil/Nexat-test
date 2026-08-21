@@ -71,21 +71,18 @@ const Franchise = () => {
     try {
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
       
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", accessKey);
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("location", formData.location);
+      formDataToSend.append("subject", `NEXAT Consultation Request - ${formData.name}`);
+      formDataToSend.append("message", `Representative Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nLocation: ${formData.location}`);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          location: formData.location,
-          subject: `NEXAT Consultation Request - ${formData.name}`,
-          message: `Representative Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nLocation: ${formData.location}`
-        })
+        body: formDataToSend
       });
 
       const result = await response.json();
