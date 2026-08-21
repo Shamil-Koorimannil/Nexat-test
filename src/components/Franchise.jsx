@@ -17,6 +17,7 @@ const Franchise = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     location: ''
   });
 
@@ -67,28 +68,41 @@ const Franchise = () => {
     e.preventDefault();
     setStatus('loading');
     
-    // Construct the email body
-    const emailBody = `Consultation Request Details:
-----------------------------------------
-Name/Representative: ${formData.name}
-Email Address: ${formData.email}
-Project Site/City: ${formData.location}`;
+    try {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          location: formData.location,
+          subject: `NEXAT Consultation Request - ${formData.name}`,
+          message: `Representative Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nLocation: ${formData.location}`
+        })
+      });
 
-    // Create the mailto URL
-    const mailtoUrl = `mailto:sales@nexat.llc?subject=${encodeURIComponent('NEXAT Consultation Request - ' + formData.name)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open mail client
-    window.location.href = mailtoUrl;
-
-    // Simulate premium submission sequence status transition
-    setTimeout(() => {
-      setStatus('success');
-      setTimeout(() => {
-        setShowForm(false);
-        setStatus('idle');
-        setFormData({ name: '', email: '', location: '' });
-      }, 2500);
-    }, 1000);
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        setTimeout(() => {
+          setShowForm(false);
+          setStatus('idle');
+          setFormData({ name: '', email: '', phone: '', location: '' });
+        }, 2500);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus('error');
+    }
   };
 
   const translations = {
@@ -107,6 +121,7 @@ Project Site/City: ${formData.location}`;
       formTitle: 'Consultation Request',
       placeholderName: 'Full Name / Corporate Representative',
       placeholderEmail: 'Corporate Email Address',
+      placeholderPhone: 'Phone Number',
       placeholderLocation: 'Project Site / City',
       btnSubmit: 'Submit Project Brief',
       submittedTitle: 'Request Submitted',
@@ -127,6 +142,7 @@ Project Site/City: ${formData.location}`;
       formTitle: 'طلب استشارة للشركة',
       placeholderName: 'الاسم الكامل / ممثل الشركة',
       placeholderEmail: 'البريد الإلكتروني للشركة',
+      placeholderPhone: 'رقم الهاتف',
       placeholderLocation: 'موقع المشروع / المدينة',
       btnSubmit: 'تقديم ملخص المشروع',
       submittedTitle: 'تم تقديم الطلب بنجاح',
@@ -268,6 +284,15 @@ Project Site/City: ${formData.location}`;
                     />
                     <input 
                       required 
+                      type="tel" 
+                      name="phone" 
+                      value={formData.phone} 
+                      onChange={handleInputChange} 
+                      placeholder={current.placeholderPhone} 
+                      className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] placeholder-[#0B1624]/40 font-sans text-sm shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right' : 'text-left'}`} 
+                    />
+                    <input 
+                      required 
                       type="text" 
                       name="location" 
                       value={formData.location} 
@@ -275,6 +300,12 @@ Project Site/City: ${formData.location}`;
                       placeholder={current.placeholderLocation} 
                       className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] placeholder-[#0B1624]/40 font-sans text-sm shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right' : 'text-left'}`} 
                     />
+
+                    {status === 'error' && (
+                      <p className="text-red-500 text-xs font-sans text-center">
+                        {lang === 'ar' ? 'حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى.' : 'An error occurred while submitting. Please try again.'}
+                      </p>
+                    )}
 
 
                     <button 
