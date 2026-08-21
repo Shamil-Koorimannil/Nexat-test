@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 const NexatLogo = ({ className = "h-12" }) => {
   const { lang } = useLanguage();
-  const logoSrc = lang === 'ar' ? '/Nexat Logo - Arabic.png' : '/Nexat Logo.png';
+  const logoSrc = lang === 'ar' ? '/Nexat Logo - Arabic.png' : '/Nexat Logo  - English.png';
 
   return (
     <div className={`flex items-center ${className}`}>

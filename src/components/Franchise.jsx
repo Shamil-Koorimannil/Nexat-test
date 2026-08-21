@@ -17,8 +17,7 @@ const Franchise = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    location: '',
-    budget: ''
+    location: ''
   });
 
   useEffect(() => {
@@ -68,15 +67,28 @@ const Franchise = () => {
     e.preventDefault();
     setStatus('loading');
     
-    // Simulate premium submission sequence
+    // Construct the email body
+    const emailBody = `Consultation Request Details:
+----------------------------------------
+Name/Representative: ${formData.name}
+Email Address: ${formData.email}
+Project Site/City: ${formData.location}`;
+
+    // Create the mailto URL
+    const mailtoUrl = `mailto:sales@nexat.llc?subject=${encodeURIComponent('NEXAT Consultation Request - ' + formData.name)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open mail client
+    window.location.href = mailtoUrl;
+
+    // Simulate premium submission sequence status transition
     setTimeout(() => {
       setStatus('success');
       setTimeout(() => {
         setShowForm(false);
         setStatus('idle');
-        setFormData({ name: '', email: '', location: '', budget: '' });
+        setFormData({ name: '', email: '', location: '' });
       }, 2500);
-    }, 1500);
+    }, 1000);
   };
 
   const translations = {
@@ -96,15 +108,9 @@ const Franchise = () => {
       placeholderName: 'Full Name / Corporate Representative',
       placeholderEmail: 'Corporate Email Address',
       placeholderLocation: 'Project Site / City',
-      placeholderBudget: 'Estimated Project Budget',
       btnSubmit: 'Submit Project Brief',
       submittedTitle: 'Request Submitted',
-      submittedDesc: 'Our engineering department will contact you shortly.',
-      budgets: [
-        { value: "1M-5M", label: "$1 Million - $5 Million" },
-        { value: "5M-20M", label: "$5 Million - $20 Million" },
-        { value: "20M+", label: "$20 Million +" }
-      ]
+      submittedDesc: 'Our engineering department will contact you shortly.'
     },
     ar: {
       sectionTitle: 'اتصل بنا',
@@ -122,15 +128,9 @@ const Franchise = () => {
       placeholderName: 'الاسم الكامل / ممثل الشركة',
       placeholderEmail: 'البريد الإلكتروني للشركة',
       placeholderLocation: 'موقع المشروع / المدينة',
-      placeholderBudget: 'الميزانية التقديرية للمشروع',
       btnSubmit: 'تقديم ملخص المشروع',
       submittedTitle: 'تم تقديم الطلب بنجاح',
-      submittedDesc: 'سيتواصل معك قسم الهندسة لدينا في أقرب وقت ممكن.',
-      budgets: [
-        { value: "1M-5M", label: "١ مليون دولار - ٥ مليون دولار" },
-        { value: "5M-20M", label: "٥ مليون دولار - ٢٠ مليون دولار" },
-        { value: "20M+", label: "أكثر من ٢٠ مليون دولار" }
-      ]
+      submittedDesc: 'سيتواصل معك قسم الهندسة لدينا في أقرب وقت ممكن.'
     }
   };
 
@@ -275,26 +275,7 @@ const Franchise = () => {
                       placeholder={current.placeholderLocation} 
                       className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] placeholder-[#0B1624]/40 font-sans text-sm shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right' : 'text-left'}`} 
                     />
-                    
-                    <div className="relative">
-                      <select 
-                        required 
-                        name="budget" 
-                        value={formData.budget} 
-                        onChange={handleInputChange} 
-                        className={`w-full px-4 py-3.5 bg-white border border-[#0B1624]/15 rounded-xl focus:outline-none focus:border-[#DA9A62] text-[#0B1624] font-sans text-sm appearance-none select-menu shadow-[0_2px_4px_rgba(11,22,36,0.01)] transition-colors duration-200 ${isRtl ? 'text-right pr-4 pl-10' : 'text-left pl-4 pr-10'}`}
-                        style={{ color: formData.budget === '' ? 'rgba(11,22,36,0.4)' : '#0B1624' }}
-                      >
-                        <option value="" disabled>{current.placeholderBudget}</option>
-                        {current.budgets.map(b => (
-                          <option key={b.value} value={b.value}>{b.label}</option>
-                        ))}
-                      </select>
-                      {/* Custom dropdown caret indicator */}
-                      <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none text-[#0B1624]/40 ${isRtl ? 'left-4' : 'right-4'}`}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M6 9l6 6 6-6"/></svg>
-                      </div>
-                    </div>
+
 
                     <button 
                       type="submit" 
