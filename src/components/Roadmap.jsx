@@ -30,37 +30,43 @@ const Roadmap = () => {
           phase: '01',
           title: 'Architectural Conception & Feasibility',
           subtitle: 'Vision & Feasibility Study',
-          desc: 'Translating client parameters into initial blueprints and spatial designs. We analyze site constraints, zoning guidelines, and perform structural feasibility modeling to secure approvals.'
+          desc: 'Translating client parameters into initial blueprints and spatial designs. We analyze site constraints, zoning guidelines, and perform structural feasibility modeling to secure approvals.',
+          image: '/project_civic.png'
         },
         {
           phase: '02',
           title: 'Advanced Structural Engineering',
           subtitle: 'Safety & Material Rigor',
-          desc: 'Executing comprehensive calculations for load-bearing capabilities, structural mechanics, wind-loads, and seismological resistance. We engineer with advanced materials for structural longevity.'
+          desc: 'Executing comprehensive calculations for load-bearing capabilities, structural mechanics, wind-loads, and seismological resistance. We engineer with advanced materials for structural longevity.',
+          image: '/project_tower.png'
         },
         {
           phase: '03',
           title: 'Construction & General Contracting',
           subtitle: 'Precision Site Execution',
-          desc: 'Orchestrating raw construction works, concrete pouring, crane logistics, and civil work. Our dedicated engineers oversee daily operations, maintaining high safety standards.'
+          desc: 'Orchestrating raw construction works, concrete pouring, crane logistics, and civil work. Our dedicated engineers oversee daily operations, maintaining high safety standards.',
+          image: '/six_flags_showcase.png'
         },
         {
           phase: '04',
           title: 'Bespoke Interior Architecture',
           subtitle: 'Luxury Material Curation',
-          desc: 'Designing luxury interior layouts, bespoke woodwork, stone selection, lighting, and automation. We collaborate with international suppliers to secure custom material finishes.'
+          desc: 'Designing luxury interior layouts, bespoke woodwork, stone selection, lighting, and automation. We collaborate with international suppliers to secure custom material finishes.',
+          image: '/project_villa.png'
         },
         {
           phase: '05',
           title: 'Sustainable Infrastructure & HVAC',
           subtitle: 'Energy & Ecological Integration',
-          desc: 'Integrating geothermal systems, solar layouts, greywater recovery, smart automation, and optimal thermal acoustics. We aim for LEED/BREEAM certifications on major projects.'
+          desc: 'Integrating geothermal systems, solar layouts, greywater recovery, smart automation, and optimal thermal acoustics. We aim for LEED/BREEAM certifications on major projects.',
+          image: '/headquarters.png'
         },
         {
           phase: '06',
           title: 'Project Handover & Facility Care',
           subtitle: 'Lifecycle Maintenance',
-          desc: 'Providing thorough documentation, maintenance protocols, structural checks, and facility optimization services post-construction to guarantee building performance.'
+          desc: 'Providing thorough documentation, maintenance protocols, structural checks, and facility optimization services post-construction to guarantee building performance.',
+          image: '/project_civic.png'
         }
       ]
     },
@@ -74,37 +80,43 @@ const Roadmap = () => {
           phase: '٠١',
           title: 'التصميم المعماري ودراسة الجدوى',
           subtitle: 'الرؤية ودراسة الجدوى',
-          desc: 'تحويل متطلبات العميل إلى مخططات أولية وتصميمات فراغية. نقوم بتحليل قيود الموقع وإرشادات التخطيط ونمذجة الجدوى الإنشائية للحصول على الموافقات.'
+          desc: 'تحويل متطلبات العميل إلى مخططات أولية وتصميمات فراغية. نقوم بتحليل قيود الموقع وإرشادات التخطيط ونمذجة الجدوى الإنشائية للحصول على الموافقات.',
+          image: '/project_civic.png'
         },
         {
           phase: '٠٢',
           title: 'الهندسة الإنشائية المتقدمة',
           subtitle: 'السلامة ومتانة المواد',
-          desc: 'إجراء الحسابات الشاملة للقدرات الحاملة والميكانيكا الإنشائية وأحمال الرياح ومقاومة الزلازل. نصمم باستخدام مواد متقدمة لضمان المتانة الطويلة الأجل.'
+          desc: 'إجراء الحسابات الشاملة للقدرات الحاملة والميكانيكا الإنشائية وأحمال الرياح ومقاومة الزلازل. نصمم باستخدام مواد متقدمة لضمان المتانة الطويلة الأجل.',
+          image: '/project_tower.png'
         },
         {
           phase: '٠٣',
           title: 'البناء والمقاولات العامة',
           subtitle: 'دقة التنفيذ في الموقع',
-          desc: 'تنظيم أعمال البناء الأساسية، وصب الخرسانة، ولوجستيات الرافعات، والأعمال المدنية. يشرف مهندسونا المختصون على العمليات اليومية مع الحفاظ على أعلى معايير السلامة.'
+          desc: 'تنظيم أعمال البناء الأساسية، وصب الخرسانة، ولوجستيات الرافعات، والأعمال المدنية. يشرف مهندسونا المختصون على العمليات اليومية مع الحفاظ على أعلى معايير السلامة.',
+          image: '/six_flags_showcase.png'
         },
         {
           phase: '٠٤',
           title: 'التصميم الداخلي المعماري الفاخر',
           subtitle: 'تنسيق المواد الفاخرة',
-          desc: 'تصميم مخططات داخلية فاخرة، وأعمال خشبية مخصصة، واختيار الأحجار والرخام، والإضاءة والأتمتة الذكية. نتعاون مع موردين دوليين لتأمين تشطيبات مميزة مخصصة.'
+          desc: 'تصميم مخططات داخلية فاخرة، وأعمال خشبية مخصصة، واختيار الأحجار والرخام، والإضاءة والأتمتة الذكية. نتعاون مع موردين دوليين لتأمين تشطيبات مميزة مخصصة.',
+          image: '/project_villa.png'
         },
         {
           phase: '٠٥',
           title: 'البنية التحتية المستدامة والتكييف',
           subtitle: 'تكامل الطاقة والبيئة',
-          desc: 'دمج الأنظمة الحرارية الأرضية، ومخططات الطاقة الشمسية، واستعادة المياه الرمادية، والأتمتة الذكية، والعزل الصوتي والحراري الأمثل. نهدف للحصول على شهادات LEED/BREEAM في المشاريع الكبرى.'
+          desc: 'دمج الأنظمة الحرارية الأرضية، ومخططات الطاقة الشمسية، واستعادة المياه الرمادية، والأتمتة الذكية، والعزل الصوتي والحراري الأمثل. نهدف للحصول على شهادات LEED/BREEAM في المشاريع الكبرى.',
+          image: '/headquarters.png'
         },
         {
           phase: '٠٦',
           title: 'تسليم المشروع ورعاية المرافق',
           subtitle: 'صيانة دورة حياة المبنى',
-          desc: 'تقديم توثيق شامل، وبروتوكولات الصيانة، والفحوصات الإنشائية، وخدمات تحسين المرافق بعد البناء لضمان أعلى أداء للمبنى.'
+          desc: 'تقديم توثيق شامل، وبروتوكولات الصيانة، والفحوصات الإنشائية، وخدمات تحسين المرافق بعد البناء لضمان أعلى أداء للمبنى.',
+          image: '/project_civic.png'
         }
       ]
     }
@@ -291,6 +303,18 @@ const TimelineCard = ({ item, isEven, index }) => {
           <p className="text-xs uppercase font-semibold tracking-wider text-[var(--muted-text)] mt-1">
             {item.subtitle}
           </p>
+          
+          {item.image && (
+            <div className="my-4 relative w-full h-44 rounded-xl overflow-hidden border border-white/5 group-hover:border-[var(--accent)]/20 transition-all duration-300">
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624]/40 to-transparent pointer-events-none" />
+            </div>
+          )}
+
           <p className="text-[var(--secondary-text)] text-base leading-relaxed mt-3 font-sans">
             {item.desc}
           </p>
