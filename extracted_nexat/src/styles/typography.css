@@ -1,0 +1,104 @@
+/* Typography System */
+
+body {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  line-height: 1.5;
+  color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Typography Scale classes */
+.display-xl {
+  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.display-l {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.heading-m {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.heading-s {
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.editorial-statement {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.editorial-subtitle {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.5;
+  font-style: italic;
+  text-transform: none;
+}
+
+.nav-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.body-large {
+  font-size: clamp(1rem, 1.2vw, 1.3rem);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.body-standard {
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.body-small {
+  font-size: clamp(0.8rem, 0.85vw, 0.9rem);
+  line-height: 1.5;
+  font-weight: 400;
+}
