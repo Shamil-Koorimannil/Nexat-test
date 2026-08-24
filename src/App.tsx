@@ -9,7 +9,7 @@ import { Footer } from './components/Footer';
 import { Maintenance } from './components/Maintenance';
 
 function App() {
-  const isMaintenance = false; // Set to true to activate the offline maintenance page
+  const isMaintenance = true; // Set to true to activate the offline maintenance page
 
   if (isMaintenance) {
     return <Maintenance />;
