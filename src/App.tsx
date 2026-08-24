@@ -13,6 +13,8 @@ import { Expertise } from './components/Expertise';
 import { Footer } from './components/Footer';
 import { Maintenance } from './components/Maintenance';
 
+import { CompanyProfile } from './components/CompanyProfile';
+
 interface Certification {
   nameKey: string;
   icon: React.ReactNode;
@@ -254,6 +256,9 @@ function App() {
 
         {/* Scroll-driven dual-direction image marquee section */}
         <MarqueeSection />
+
+        {/* Interactive corporate profile sections */}
+        <CompanyProfile />
 
         {/* Staggered Vertical Parallax Gallery */}
         <StaggeredGallery />

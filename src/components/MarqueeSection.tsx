@@ -32,7 +32,15 @@ export const MarqueeSection: React.FC = () => {
   const doubledRow1 = [...row1Items, ...row1Items];
   const doubledRow2 = [...row2Items, ...row2Items];
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -49,6 +57,7 @@ export const MarqueeSection: React.FC = () => {
     handleScroll();
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
@@ -78,17 +87,17 @@ export const MarqueeSection: React.FC = () => {
       <div className="flex flex-col gap-l md:gap-xl w-full pt-m">
         
         {/* Top Row */}
-        <div className="w-full overflow-hidden relative">
+        <div className={`w-full relative ${isMobile ? 'overflow-x-auto scrollbar-none snap-x px-6' : 'overflow-hidden'}`}>
           <div
-            className="flex gap-l md:gap-xl transition-transform duration-100 ease-out will-change-transform"
-            style={{
+            className="flex gap-l md:gap-xl"
+            style={isMobile ? {} : {
               transform: `translate3d(${row1Translation}px, 0, 0)`,
             }}
           >
-            {doubledRow1.map((item, index) => (
+            {(isMobile ? row1Items : doubledRow1).map((item, index) => (
               <div
                 key={`${item.id}-${index}`}
-                className="flex-shrink-0 w-[280px] md:w-[360px] aspect-[16/10] relative rounded-2xl overflow-hidden shadow-sm group bg-gray-100"
+                className="flex-shrink-0 w-[280px] md:w-[360px] aspect-[16/10] relative rounded-2xl overflow-hidden shadow-sm group bg-gray-100 snap-center"
               >
                 <img
                   src={item.image}
@@ -110,17 +119,17 @@ export const MarqueeSection: React.FC = () => {
         </div>
 
         {/* Bottom Row */}
-        <div className="w-full overflow-hidden relative">
+        <div className={`w-full relative ${isMobile ? 'overflow-x-auto scrollbar-none snap-x px-6' : 'overflow-hidden'}`}>
           <div
-            className="flex gap-l md:gap-xl transition-transform duration-100 ease-out will-change-transform"
-            style={{
+            className="flex gap-l md:gap-xl"
+            style={isMobile ? {} : {
               transform: `translate3d(${row2Translation}px, 0, 0)`,
             }}
           >
-            {doubledRow2.map((item, index) => (
+            {(isMobile ? row2Items : doubledRow2).map((item, index) => (
               <div
                 key={`${item.id}-${index}`}
-                className="flex-shrink-0 w-[280px] md:w-[360px] aspect-[16/10] relative rounded-2xl overflow-hidden shadow-sm group bg-gray-100"
+                className="flex-shrink-0 w-[280px] md:w-[360px] aspect-[16/10] relative rounded-2xl overflow-hidden shadow-sm group bg-gray-100 snap-center"
               >
                 <img
                   src={item.image}

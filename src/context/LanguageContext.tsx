@@ -142,6 +142,87 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         description: 'We are calibrating our digital platform to deliver a more refined engineering and architectural experience.',
         getInTouch: 'Get In Touch',
         copyright: '© 2026 NEXAT Construction Co. All rights reserved.',
+      },
+      profile: {
+        about: {
+          title: "About NEXAT",
+          headline: "Engineering Excellence & Disciplined Execution",
+          body1: "NEXAT Construction Co. is a Saudi-owned multidisciplinary engineering, construction, and real estate development company serving Saudi Arabia and the GCC.",
+          body2: "We deliver comprehensive EPC, Design & Build, and General Contracting solutions with a focus on quality, safety, and long-term value.",
+          body3: "Our engineering-led approach brings together technical expertise, disciplined project delivery, and transparent client partnership. From early planning through handover and facility management, NEXAT transforms ambitious visions into sustainable built assets."
+        },
+        visionMission: {
+          title: "Vision & Mission",
+          visionLabel: "Vision",
+          visionText: "To become the Middle East’s most trusted engineering and construction partner, recognized for delivering landmark projects through innovation, quality, and sustainable excellence.\n\nWe aspire to shape resilient communities, world-class infrastructure, and enduring developments that contribute to the region’s future.",
+          missionLabel: "Mission",
+          missionText: "To provide integrated engineering and construction solutions that create lasting value through:\n• Technical expertise\n• Operational excellence\n• Safety leadership\n• Continuous innovation\n• Disciplined planning\n• Value engineering\n• Quality systems\n• Transparent client partnership\n\nWe deliver from concept to completion."
+        },
+        coreValues: {
+          title: "Core Values",
+          val1Title: "Integrity & Accountability",
+          val1Text: "Integrity, accountability, and respect guide our conduct, decisions, and relationships at every level.",
+          val2Title: "Safety & Quality",
+          val2Text: "Safety First and Quality Without Compromise shape how we plan, build, and hand over every project.",
+          val3Title: "Excellence & Partnership",
+          val3Text: "Engineering excellence, client partnership, innovation, sustainability, and continuous improvement drive lasting value."
+        },
+        whyChoose: {
+          title: "Why Choose NEXAT",
+          reason1Title: "Engineering-Led Solutions",
+          reason1Text: "NEXAT combines technical expertise, international standards, and value engineering to deliver practical, high-performing solutions from the earliest project stage. Our teams develop coordinated approaches that improve quality, manage risk, and protect long-term project value.",
+          reason2Title: "Turnkey Delivery",
+          reason2Text: "From fast mobilization through construction, commissioning, and handover, we provide a single accountable partner across the project lifecycle. Sustainable construction practices and disciplined execution help clients achieve reliable outcomes with confidence."
+        },
+        divisions: {
+          title: "Business Divisions",
+          div1Title: "General Contracting & Civil Infrastructure",
+          div1Items: "General Contracting | Civil & Infrastructure",
+          div2Title: "Structural & Architectural Works",
+          div2Items: "Structural Engineering | Architectural Finishing & Interior Fit-Out",
+          div3Title: "MEP & Building Protection",
+          div3Items: "MEP Engineering | Waterproofing & Thermal Insulation",
+          div4Title: "Development & Asset Management",
+          div4Items: "Real Estate Development | Facility Management"
+        },
+        sectors: {
+          title: "Market Sectors",
+          intro: "NEXAT serves a broad range of sectors across Saudi Arabia and the GCC.",
+          primaryTitle: "Primary Sectors",
+          primaryItems: ["Government", "Commercial", "Residential", "Healthcare", "Hospitality", "Education"],
+          additionalTitle: "Additional Capabilities",
+          additionalItems: ["Industrial", "Logistics", "Infrastructure", "Energy", "Mixed-Use Developments"]
+        },
+        qa: {
+          title: "Quality Assurance",
+          headline: "Quality Without Compromise",
+          body: "Quality is embedded in every phase of our project delivery. Through rigorous QA/QC procedures, material verification, third-party testing, inspections, and commissioning, NEXAT ensures every project meets the highest standards of safety, performance, and client satisfaction."
+        },
+        future: {
+          title: "Building the Future Responsibly",
+          desc: "This presents our core corporate pillars for sustainable and digital project development.",
+          hseTitle: "Health, Safety & Environment",
+          hseText: "At NEXAT, safety is the foundation of every project. We foster a zero-harm culture through proactive risk management, comprehensive training, permit-to-work systems, toolbox talks, emergency preparedness, and environmentally responsible practices that protect our people, clients, and communities.",
+          sustTitle: "Sustainability",
+          sustText: "We integrate sustainable construction practices by promoting energy-efficient buildings, water conservation, waste reduction, responsible material selection, and lifecycle cost optimization. Our approach creates lasting value while minimizing environmental impact.",
+          digTitle: "Digital Construction",
+          digText: "NEXAT leverages modern construction technologies including Building Information Modeling (BIM), 3D coordination, drone monitoring, cloud-based project management, digital inspections, and electronic document control. These technologies enable greater accuracy, collaboration, and project efficiency.",
+          advTitle: "Competitive Advantages",
+          advText: "Our engineering-led approach combines experienced professionals, turnkey project delivery, advanced technology, transparent communication, and rigorous quality systems. This enables us to consistently deliver reliable, high-performance outcomes and build long-term client partnerships."
+        },
+        vision2030: {
+          title: "Vision 2030 Commitment",
+          headline: "Building Saudi Arabia’s Future",
+          body: "NEXAT is proud to support Saudi Arabia’s Vision 2030 by delivering engineering and construction solutions that advance sustainable infrastructure, smart cities, housing, tourism, and industrial development. Through innovation, local expertise, and world-class execution, we contribute to building a resilient and diversified future for the Kingdom."
+        },
+        cta: {
+          title: "Let’s Build Together",
+          email: "Email",
+          phone: "Phone",
+          address: "Address",
+          office: "Head Office: Riyadh, Saudi Arabia",
+          social: "Social Media"
+        }
       }
     },
     ar: {
@@ -257,6 +338,87 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         description: 'نعمل على معايرة منصتنا الرقمية لتقديم تجربة هندسية ومعمارية أكثر تطوراً.',
         getInTouch: 'اتصل بنا',
         copyright: '© ٢٠٢٦ شركة نكسات للمقاولات. جميع الحقوق محفوظة.',
+      },
+      profile: {
+        about: {
+          title: "عن نكسات",
+          headline: "التميز الهندسي والتنفيذ المنضبط",
+          body1: "شركة نكسات للمقاولات هي شركة هندسية وإنشائية وتطوير عقاري متعددة التخصصات مملوكة سعودياً تخدم المملكة العربية السعودية ودول مجلس التعاون الخليجي.",
+          body2: "نحن نقدم حلولاً شاملة في مجالات الهندسة والمشتريات والبناء (EPC) والتصميم والبناء والمقاولات العامة مع التركيز على الجودة والسلامة والقيمة على المدى الطويل.",
+          body3: "يجمع نهجنا القائم على الهندسة بين الخبرة الفنية والتسليم المنضبط للمشاريع والشراكة الشفافة مع العملاء. من التخطيط المبكر وحتى التسليم وإدارة المرافق، تحول نكسات الرؤى الطموحة إلى أصول مبنية مستدامة."
+        },
+        visionMission: {
+          title: "الرؤية والرسالة",
+          visionLabel: "الرؤية",
+          visionText: "أن نصبح الشريك الهندسي والإنشائي الأكثر موثوقية في الشرق الأوسط، والمتميز بتقديم مشاريع معالم بارزة من خلال الابتكار والجودة والتميز المستدام.\n\nنطمح للمساهمة في بناء مجتمعات مرنة، وبنية تحتية عالمية المستوى، وتطورات مستدامة تسهم في مستقبل المنطقة.",
+          missionLabel: "الرسالة",
+          missionText: "تقديم حلول هندسية وإنشائية متكاملة تخلق قيمة دائمة من خلال:\n• الخبرة الفنية\n• التميز التشغيلي\n• قيادة السلامة\n• الابتكار المستمر\n• التخطيط المنضبط\n• الهندسة القيمية\n• أنظمة الجودة\n• الشراكة الشفافة مع العملاء\n\nنحن نقدم خدماتنا من الفكرة إلى الاكتمال."
+        },
+        coreValues: {
+          title: "القيم الجوهرية",
+          val1Title: "النزاهة والمسؤولية",
+          val1Text: "النزاهة والمسؤولية والاحترام هي التي توجه سلوكنا وقراراتنا وعلاقاتنا على جميع المستويات.",
+          val2Title: "السلامة والجودة",
+          val2Text: "السلامة أولاً والجودة دون مساومة هما ما يشكلان كيفية تخطيطنا وبنائنا وتسليمنا لكل مشروع.",
+          val3Title: "التميز والشراكة",
+          val3Text: "التميز الهندسي والشراكة مع العملاء والابتكار والاستدامة والتحسين المستمر هي محركات القيمة الدائمة لدينا."
+        },
+        whyChoose: {
+          title: "لماذا تختار نكسات؟",
+          reason1Title: "حلول قائمة على الهندسة",
+          reason1Text: "تجمع نكسات بين الخبرة الفنية والمعايير الدولية والهندسة القيمية لتقديم حلول عملية وعالية الأداء منذ المراحل الأولى للمشروع. تطور فرقنا مناهج منسقة تعمل على تحسين الجودة وإدارة المخاطر وحماية قيمة المشروع على المدى الطويل.",
+          reason2Title: "التسليم الجاهز (المفتاح)",
+          reason2Text: "من الحشد السريع وحتى البناء والتشغيل والتسليم، نوفر شريكاً واحداً مسؤولاً طوال دورة حياة المشروع. تساعد ممارسات البناء المستدام والتنفيذ المنضبط العملاء على تحقيق نتائج موثوقة بكل ثقة."
+        },
+        divisions: {
+          title: "قطاعات الأعمال",
+          div1Title: "المقاولات العامة والبنية التحتية المدنية",
+          div1Items: "المقاولات العامة | الأعمال المدنية والبنية التحتية",
+          div2Title: "الأعمال الهيكلية والمعمارية",
+          div2Items: "الهندسة الإنشائية | التشطيبات المعمارية والتجهيزات الداخلية",
+          div3Title: "الكهروميكانيك وحماية المباني",
+          div3Items: "هندسة الكهروميكانيك | عزل المياه والعزل الحراري",
+          div4Title: "التطوير وإدارة الأصول",
+          div4Items: "التطوير العقاري | إدارة المرافق"
+        },
+        sectors: {
+          title: "القطاعات السوقية",
+          intro: "تخدم نكسات مجموعة واسعة من القطاعات في جميع أنحاء المملكة العربية السعودية ودول مجلس التعاون الخليجي.",
+          primaryTitle: "القطاعات الرئيسية",
+          primaryItems: ["الحكومي", "التجاري", "السكني", "الرعاية الصحية", "الضيافة والفنادق", "التعليم"],
+          additionalTitle: "القدرات الإضافية",
+          additionalItems: ["الصناعي", "الخدمات اللوجستية", "البنية التحتية", "الطاقة", "المشاريع متعددة الاستخدامات"]
+        },
+        qa: {
+          title: "توكيد الجودة",
+          headline: "الجودة دون مساومة",
+          body: "الجودة متأصلة في كل مرحلة من مراحل تسليم مشاريعنا. من خلال إجراءات توكيد وضبط الجودة (QA/QC) الصارمة، والتحقق من المواد، واختبارات الطرف الثالث، وعمليات التفتيش، والتشغيل التجريبي، تضمن نكسات أن يلبي كل مشروع أعلى معايير السلامة والأداء ورضا العملاء."
+        },
+        future: {
+          title: "بناء المستقبل بمسؤولية",
+          desc: "يقدم هذا القسم ركائزنا الأربع الأساسية للبناء المستقبلي الموثوق والتطوير الرقمي للمشاريع.",
+          hseTitle: "الصحة والسلامة والبيئة",
+          hseText: "في نكسات، السلامة هي أساس كل مشروع. نحن نعمل على تعزيز ثقافة خالية من الأذى والضرر من خلال الإدارة الاستباقية للمخاطر، والتدريب الشامل، وأنظمة تصاريح العمل، ومحادثات السلامة اليومية، والتأهب لحالات الطوارئ، والممارسات الصديقة للبيئة لحماية موظفينا وعملائنا ومجتمعاتنا.",
+          sustTitle: "الاستدامة",
+          sustText: "نحن ندمج ممارسات البناء المستدام من خلال تشجيع المباني الموفرة للطاقة، وترشيد استهلاك المياه، والحد من النفايات، واختيار المواد بمسؤولية، وتحسين تكلفة دورة الحياة. يخلق نهجنا قيمة دائمة مع تقليل الأثر البيئي.",
+          digTitle: "البناء الرقمي",
+          digText: "تستفيد نكسات من تقنيات البناء الحديثة بما في ذلك نمذجة معلومات البناء (BIM)، والتنسيق ثلاثي الأبعاد، ومراقبة المواقع عبر الطائرات بدون طيار، وإدارة المشاريع السحابية، وعمليات التفتيش الرقمية، والتحكم الإلكتروني في المستندات. تمكن هذه التقنيات من تحقيق دقة أكبر وتنسيق أعلى وكفاءة في المشاريع.",
+          advTitle: "المزايا التنافسية",
+          advText: "يجمع نهجنا القائم على الهندسة بين الكفاءات المهنية ذات الخبرة، وتسليم المشاريع الجاهزة، والتكنولوجيا المتقدمة، والتواصل الشفاف، وأنظمة الجودة الصارمة. يتيح لنا ذلك تقديم نتائج موثوقة وعالية الأداء باستمرار وبناء شراكات طويلة الأمد مع العملاء."
+        },
+        vision2030: {
+          title: "الالتزام برؤية ٢٠٣٠",
+          headline: "بناء مستقبل المملكة العربية السعودية",
+          body: "تفخر نكسات بدعم رؤية المملكة العربية السعودية ٢٠٣٠ من خلال تقديم حلول هندسية وإنشائية تساهم في تقدم البنية التحتية المستدامة، المدن الذكية، الإسكان، السياحة، والتنمية الصناعية. من خلال الابتكار والخبرات المحلية والتنفيذ عالمي المستوى، نساهم في بناء مستقبل مرن ومتنوع للمملكة."
+        },
+        cta: {
+          title: "لنتبنى المستقبل معاً",
+          email: "البريد الإلكتروني",
+          phone: "الهاتف",
+          address: "العنوان",
+          office: "المكتب الرئيسي: الرياض، المملكة العربية السعودية",
+          social: "قنوات التواصل"
+        }
       }
     }
   };
