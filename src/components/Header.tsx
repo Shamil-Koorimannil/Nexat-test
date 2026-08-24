@@ -8,13 +8,13 @@ export const Header: React.FC = () => {
   const navLinks = [
     { label: t('header.aboutUs'), href: '#expertise' },
     { label: t('header.divisions'), href: '#feature-cards' },
-    { label: t('header.projects'), href: '#marquee-section' },
+    { label: t('header.projects'), href: '#projects' },
     { label: t('header.capabilities'), href: '#global-presence' },
     { label: t('header.contact'), href: '#footer' },
   ];
 
   return (
-    <header className="w-full z-50">
+    <header className="w-full z-50 sticky top-[-38px]">
       {/* Thin Top Bar */}
       <div className="bg-black text-[#dcdcdc] h-[38px] flex items-center border-b border-white/10 px-m text-xs">
         <div className="container mx-auto flex justify-between items-center px-s">

@@ -22,11 +22,11 @@ export const MarqueeSection: React.FC = () => {
   ];
 
   const row2Items: MarqueeCard[] = [
-    { id: 6, image: '/assets/project_civic.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
-    { id: 7, image: '/assets/headquarters.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
-    { id: 8, image: '/assets/project_tower.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
-    { id: 9, image: '/assets/six_flags_showcase.png', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
-    { id: 10, image: '/assets/project_villa.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
+    { id: 6, image: '/assets/marquee_1.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
+    { id: 7, image: '/assets/marquee_2.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
+    { id: 8, image: '/assets/marquee_3.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
+    { id: 9, image: '/assets/marquee_4.png', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
+    { id: 10, image: '/assets/marquee_5.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
   ];
 
   const doubledRow1 = [...row1Items, ...row1Items];

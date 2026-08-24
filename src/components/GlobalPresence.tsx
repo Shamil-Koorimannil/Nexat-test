@@ -21,7 +21,7 @@ export const GlobalPresence: React.FC = () => {
       titleKey: 'globalPresence.div1Title',
       subtitleKey: 'globalPresence.div1Sub',
       descKey: 'globalPresence.div1Desc',
-      image: '/assets/project_civic.png',
+      image: '/assets/global_1.png',
     },
     {
       id: 'structural-architectural',
@@ -29,7 +29,7 @@ export const GlobalPresence: React.FC = () => {
       titleKey: 'globalPresence.div2Title',
       subtitleKey: 'globalPresence.div2Sub',
       descKey: 'globalPresence.div2Desc',
-      image: '/assets/project_tower.png',
+      image: '/assets/global_2.png',
     },
     {
       id: 'mep-protection',
@@ -37,7 +37,7 @@ export const GlobalPresence: React.FC = () => {
       titleKey: 'globalPresence.div3Title',
       subtitleKey: 'globalPresence.div3Sub',
       descKey: 'globalPresence.div3Desc',
-      image: '/assets/project_villa.png',
+      image: '/assets/global_3.png',
     },
     {
       id: 'development-asset',
@@ -45,7 +45,7 @@ export const GlobalPresence: React.FC = () => {
       titleKey: 'globalPresence.div4Title',
       subtitleKey: 'globalPresence.div4Sub',
       descKey: 'globalPresence.div4Desc',
-      image: '/assets/headquarters.png',
+      image: '/assets/global_4.png',
     },
   ];
 

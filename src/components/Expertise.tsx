@@ -58,7 +58,7 @@ export const Expertise: React.FC = () => {
           {/* Right Column: Parallax Image */}
           <div className="relative rounded-[30px] overflow-hidden shadow-lg h-[460px] md:h-[520px] bg-gray-100">
             <img
-              src="/assets/project_tower.png"
+              src="/assets/expertise_ceo.png"
               alt="NEXAT Construction Site"
               className="absolute inset-0 w-full h-[120%] object-cover parallax-img"
               style={{
