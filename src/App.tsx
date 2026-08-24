@@ -6,8 +6,15 @@ import { FeatureCards } from './components/FeatureCards';
 import { GlobalPresence } from './components/GlobalPresence';
 import { Expertise } from './components/Expertise';
 import { Footer } from './components/Footer';
+import { Maintenance } from './components/Maintenance';
 
 function App() {
+  const isMaintenance = false; // Set to true to activate the offline maintenance page
+
+  if (isMaintenance) {
+    return <Maintenance />;
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
       {/* Navbar with thin top bar and sticky header */}

@@ -135,6 +135,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         privacy: 'Privacy Policy',
         hse: 'HSE Compliance',
         conduct: 'Code of Conduct',
+      },
+      maintenance: {
+        tagline: '[ SYSTEM UPGRADE ]',
+        title: 'TEMPORARILY OFFLINE',
+        description: 'We are calibrating our digital platform to deliver a more refined engineering and architectural experience.',
+        getInTouch: 'Get In Touch',
+        copyright: '© 2026 NEXAT Construction Co. All rights reserved.',
       }
     },
     ar: {
@@ -243,6 +250,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         privacy: 'سياسة الخصوصية',
         hse: 'التزام السلامة HSE',
         conduct: 'ميثاق السلوك',
+      },
+      maintenance: {
+        tagline: '[ ترقية النظام ]',
+        title: 'خارج الخدمة مؤقتاً',
+        description: 'نعمل على معايرة منصتنا الرقمية لتقديم تجربة هندسية ومعمارية أكثر تطوراً.',
+        getInTouch: 'اتصل بنا',
+        copyright: '© ٢٠٢٦ شركة نكسات للمقاولات. جميع الحقوق محفوظة.',
       }
     }
   };
