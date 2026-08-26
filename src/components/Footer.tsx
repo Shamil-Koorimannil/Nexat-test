@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-l">
           {/* Logo / Branding */}
           <div className="flex items-center gap-s">
-            <img src="/assets/Nexat Logo - Arabic.png" alt="NEXAT" className="max-h-[30px] w-auto object-contain brightness-0 invert opacity-60" />
+            <img src="/Nexat Logo.png" alt="NEXAT" className="max-h-[30px] w-auto object-contain brightness-0 invert opacity-60" />
             <span className="text-gray-500 font-sans text-xs tracking-wider uppercase">{t('footer.logoLabel')}</span>
           </div>
 

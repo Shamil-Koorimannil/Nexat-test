@@ -58,7 +58,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img
-                src={lang === 'ar' ? '/assets/Nexat Logo - Arabic.png' : '/assets/Nexat Logo  - English.png'}
+                src="/Nexat Logo.png"
                 alt="NEXAT Logo"
                 className="h-[48px] md:h-[56px] w-auto object-contain"
               />

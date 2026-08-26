@@ -49,7 +49,7 @@ export const Maintenance: React.FC = () => {
       <main className="flex flex-col items-center justify-center text-center max-w-[480px] mx-auto py-xl">
         {/* Center Logo */}
         <img
-          src={lang === 'ar' ? '/assets/Nexat Logo - Arabic.png' : '/assets/Nexat Logo  - English.png'}
+          src="/Nexat Logo.png"
           alt="NEXAT Logo"
           className="h-[60px] md:h-[72px] w-auto object-contain mb-l"
         />
