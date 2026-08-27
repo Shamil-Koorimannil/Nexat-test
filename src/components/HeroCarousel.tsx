@@ -29,7 +29,7 @@ export const HeroCarousel: React.FC = () => {
     },
     {
       id: 2,
-      image: '/assets/project_civic.png',
+      image: '/assets/B1.png',
       titleEn: 'WATER & MEP UTILITY INFRASTRUCTURE SYSTEMS',
       titleAr: 'أنظمة البنية التحتية للمياه والأعمال الكهروميكانيكية',
       taglineEn: 'NEXAT Infrastructure | Durability & Integration',
@@ -39,7 +39,7 @@ export const HeroCarousel: React.FC = () => {
     },
     {
       id: 3,
-      image: '/assets/six_flags_showcase.png',
+      image: '/assets/B2.png',
       titleEn: 'ARCHITECTURAL FINISHES & PREMIUM FIT-OUT',
       titleAr: 'التشطيبات المعمارية الراقية والتجهيزات الداخلية الفاخرة',
       taglineEn: 'NEXAT Fine Finishes | Exquisite Craftsmanship',
@@ -49,7 +49,7 @@ export const HeroCarousel: React.FC = () => {
     },
     {
       id: 4,
-      image: '/assets/project_villa.png',
+      image: '/assets/B3.png',
       titleEn: 'MULTI-STOREY GENERAL BUILDING CONSTRUCTION',
       titleAr: 'تشييد المباني العامة والهياكل المعمارية المتكاملة',
       taglineEn: 'NEXAT General Contracting | Safe & On-Schedule',

@@ -21,101 +21,101 @@ export const WhyDubai: React.FC = () => {
       id: 1,
       title: 'Higher Rental Yields',
       desc: 'Investors can earn rental yields of up to 8-10%** annually, surpassing many global markets.',
-      image: '/assets/Higher_Rental_Yields-_Mobile_1.webp',
+      image: '/assets/B1.png',
     },
     {
       id: 2,
       title: 'TAX FREE ENVIRONMENT',
       desc: 'The UAE offers zero income, capital gains, and wealth tax, maximising returns for investors.',
-      image: '/assets/Zero_Taxes-_Mobile_1.webp',
+      image: '/assets/B2.png',
     },
     {
       id: 3,
       title: 'UAE GOLDEN VISA BENEFITS',
       desc: 'Real estate investments in Dubai can grant you long-term residency and exclusive Golden Visa benefits.',
-      image: '/assets/UAE_Golden_Visa-_Mobile.jpg',
+      image: '/assets/B3.png',
     },
     {
       id: 4,
       title: 'Premium Healthcare',
       desc: 'With strong healthcare investments, the city is ideal for supporting your health and wellbeing.',
-      image: '/assets/Premium_Healthcare-_Mobile_1.webp',
+      image: '/assets/B4.png',
     },
     {
       id: 5,
       title: 'World Class Education',
       desc: 'Dubai offers top-tier schools and universities with globally recognized curricula, ideal for families and expatriates.',
-      image: '/assets/World_Class_Education-_Mobile_1.webp',
+      image: '/assets/B5.png',
     },
     {
       id: 6,
       title: 'Entertainment Hub',
       desc: 'From iconic landmarks to theme parks and cultural events, Dubai is a world-class entertainment destination.',
-      image: '/assets/Entertainment_Hub-_Mobile_1.webp',
+      image: '/assets/B6.png',
     },
     {
       id: 7,
       title: 'Communal Safety',
       desc: 'The UAE ranks among the world\'s safest nations, with a well-developed, effective law enforcement system.',
-      image: '/assets/Communal_Safety-_Mobile_1.webp',
+      image: '/assets/B7.png',
     },
     {
       id: 8,
       title: 'Touristic Appeal',
       desc: 'Dubai’s iconic landmarks, luxury shopping, and vibrant culture make it a top global tourist destination.',
-      image: '/assets/Touristic_Appeal-_Mobile.jpg',
+      image: '/assets/B8.png',
     },
   ];
 
   const properties: Property[] = [
     {
       id: 1,
-      name: 'MANDARIN ORIENTAL',
-      location: 'Male, Maldives',
-      image: '/assets/IMG_-_Mandarin_oriental.jpg',
-      logo: '/assets/MOMD_1.svg',
+      name: 'GOLDEN BUTTERFLY CONSTRUCTION',
+      location: 'Riyadh, Saudi Arabia',
+      image: '/assets/B9.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
     {
       id: 2,
-      name: 'DAMAC HILLS BAGHDAD',
-      location: 'Baghdad, Irak',
-      image: '/assets/370x205.jpg',
-      logo: '/assets/DAMAC_Hills_-_Baghdad_-_Logo_EN.svg',
+      name: 'AL HUFI CONTRACTING',
+      location: 'Eastern Province, Saudi Arabia',
+      image: '/assets/B10.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
     {
       id: 3,
-      name: 'DAMAC TOWERS RIYADH',
-      location: 'Riyadh, Saudi Arabia',
-      image: '/assets/IMG_-_damac_tower_riyadh.jpg',
-      logo: '/assets/DAMAC-Tower-Riyadh-Logo-White-En.svg',
+      name: 'SIX FLAGS SAUDI ARABIA',
+      location: 'Qiddiya (Riyadh), KSA',
+      image: '/assets/B11.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
     {
       id: 4,
-      name: 'SEAVIEWS',
-      location: 'Doha, Qatar',
-      image: '/assets/IMG_-_Seaview.jpg',
-      logo: '/assets/Burj_DAMAC.svg',
+      name: 'INFRASTRUCTURE WORKS',
+      location: 'Riyadh Province, KSA',
+      image: '/assets/B12.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
     {
       id: 5,
-      name: 'DAMAC TOWER NINE ELMS',
-      location: 'London, United Kingdom',
-      image: '/assets/IMG_-_DAMAC_tower_nine_elms.jpg',
-      logo: '/assets/Logo_-_DAMAC_tower_nine_elms.svg',
+      name: 'GENERAL CONTRACTING',
+      location: 'GCC Region',
+      image: '/assets/B13.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
     {
       id: 6,
-      name: 'DAMAC TOWER AMMAN',
-      location: 'Amman, Jordan',
-      image: '/assets/IMG_-_Damac_Tower_Amman.jpg',
-      logo: '/assets/Logo_-_Damac_Tower_Amman.png',
+      name: 'CIVIL INFRASTRUCTURE',
+      location: 'Saudi Arabia',
+      image: '/assets/B14.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
     {
       id: 7,
-      name: 'DAMAC TOWER BEIRUT',
-      location: 'Beirut, Lebanon',
-      image: '/assets/IMG_-_damac_tower_beirut.jpg',
-      logo: '/assets/Logo_-_damac_tower_beirut.png',
+      name: 'PREMIUM FIT-OUT',
+      location: 'GCC Region',
+      image: '/assets/B15.png',
+      logo: '/assets/Nexat Logo  - English.png',
     },
   ];
 
@@ -187,7 +187,7 @@ export const WhyDubai: React.FC = () => {
                 alt={benefits[benefitIndex].title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/10"></div>
             </div>
             
             <div className="w-full lg:w-1/2 flex flex-col justify-center px-s">

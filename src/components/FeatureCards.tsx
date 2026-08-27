@@ -16,19 +16,19 @@ export const FeatureCards: React.FC = () => {
       id: 1,
       titleKey: 'featureCards.card1Title',
       descKey: 'featureCards.card1Desc',
-      image: '/assets/feature_1.png',
+      image: '/assets/B10.png',
     },
     {
       id: 2,
       titleKey: 'featureCards.card2Title',
       descKey: 'featureCards.card2Desc',
-      image: '/assets/feature_2.png',
+      image: '/assets/B11.png',
     },
     {
       id: 3,
       titleKey: 'featureCards.card3Title',
       descKey: 'featureCards.card3Desc',
-      image: '/assets/feature_3.png',
+      image: '/assets/B12.png',
     },
   ];
 

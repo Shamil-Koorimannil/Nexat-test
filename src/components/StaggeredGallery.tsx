@@ -15,26 +15,26 @@ export const StaggeredGallery: React.FC = () => {
 
   // Staggered column image paths
   const col1 = [
-    '/assets/project_tower.png',
-    '/assets/project_villa.png',
+    '/assets/B15.png',
+    '/assets/B16.png',
     '/assets/headquarters.png'
   ];
 
   const col2 = [
-    '/assets/project_civic.png',
-    '/assets/six_flags_showcase.png',
-    '/assets/gallery_1.png'
+    '/assets/B1.png',
+    '/assets/B2.png',
+    '/assets/B3.png'
   ];
 
   const col3 = [
-    '/assets/gallery_2.png',
-    '/assets/gallery_3.png',
-    '/assets/gallery_4.png'
+    '/assets/B4.png',
+    '/assets/B5.png',
+    '/assets/B6.png'
   ];
 
   const col4 = [
-    '/assets/gallery_5.png',
-    '/assets/gallery_6.png'
+    '/assets/B7.png',
+    '/assets/B8.png'
   ];
 
   // Combine columns for mobile view
@@ -43,8 +43,8 @@ export const StaggeredGallery: React.FC = () => {
 
   // Smooth scroll logic with requestAnimationFrame
   const animate = () => {
-    // Lerping: current = current + (target - current) * 0.1
-    currentProgress.current += (targetProgress.current - currentProgress.current) * 0.1;
+    // Lerping: lower factor = smoother/slower catch-up
+    currentProgress.current += (targetProgress.current - currentProgress.current) * 0.04;
     setScrollProgress(currentProgress.current);
     requestRef.current = requestAnimationFrame(animate);
   };
@@ -94,19 +94,19 @@ export const StaggeredGallery: React.FC = () => {
     switch (index) {
       case 0:
         baseOffset = 0;
-        speed = -180;
+        speed = -50;
         break;
       case 1:
-        baseOffset = 50;
-        speed = -60;
+        baseOffset = 15;
+        speed = -18;
         break;
       case 2:
-        baseOffset = -30;
-        speed = -220;
+        baseOffset = -10;
+        speed = -60;
         break;
       case 3:
-        baseOffset = 70;
-        speed = -100;
+        baseOffset = 20;
+        speed = -28;
         break;
       default:
         break;
@@ -126,8 +126,8 @@ export const StaggeredGallery: React.FC = () => {
   };
 
   // Mobile horizontal offsets based on vertical scroll
-  const mobileRow1Translation = (scrollProgress - 0.5) * -160;
-  const mobileRow2Translation = -60 + (scrollProgress - 0.5) * 140;
+  const mobileRow1Translation = (scrollProgress - 0.5) * -50;
+  const mobileRow2Translation = -18 + (scrollProgress - 0.5) * 45;
 
   return (
     <section 

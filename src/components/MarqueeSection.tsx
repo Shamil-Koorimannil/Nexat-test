@@ -13,20 +13,25 @@ export const MarqueeSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Lerp refs for smooth animation
+  const targetProgress = useRef(0);
+  const currentProgress = useRef(0);
+  const rafRef = useRef<number | null>(null);
+
   const row1Items: MarqueeCard[] = [
-    { id: 1, image: '/assets/project_tower.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
-    { id: 2, image: '/assets/project_civic.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
+    { id: 1, image: '/assets/B9.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
+    { id: 2, image: '/assets/B10.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
     { id: 3, image: '/assets/six_flags_showcase.png', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
-    { id: 4, image: '/assets/project_villa.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
-    { id: 5, image: '/assets/headquarters.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
+    { id: 4, image: '/assets/B11.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
+    { id: 5, image: '/assets/B12.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
   ];
 
   const row2Items: MarqueeCard[] = [
-    { id: 6, image: '/assets/marquee_1.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
-    { id: 7, image: '/assets/marquee_2.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
-    { id: 8, image: '/assets/marquee_3.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
-    { id: 9, image: '/assets/marquee_4.png', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
-    { id: 10, image: '/assets/marquee_5.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
+    { id: 6, image: '/assets/B13.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
+    { id: 7, image: '/assets/B14.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
+    { id: 8, image: '/assets/B15.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
+    { id: 9, image: '/assets/B16.png', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
+    { id: 10, image: '/assets/B8.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
   ];
 
   const doubledRow1 = [...row1Items, ...row1Items];
@@ -41,6 +46,13 @@ export const MarqueeSection: React.FC = () => {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
+    const animate = () => {
+      currentProgress.current += (targetProgress.current - currentProgress.current) * 0.04;
+      setScrollProgress(currentProgress.current);
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -48,7 +60,7 @@ export const MarqueeSection: React.FC = () => {
       
       if (rect.top < viewHeight && rect.bottom > 0) {
         const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
-        setScrollProgress(progress);
+        targetProgress.current = Math.max(0, Math.min(1, progress));
       }
     };
 
@@ -60,11 +72,12 @@ export const MarqueeSection: React.FC = () => {
       window.removeEventListener('resize', checkMobile);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
-  const row1Translation = (scrollProgress - 0.5) * -200;
-  const row2Translation = -150 + (scrollProgress - 0.5) * 200;
+  const row1Translation = (scrollProgress - 0.5) * -40;
+  const row2Translation = -30 + (scrollProgress - 0.5) * 40;
 
   return (
     <section
@@ -104,7 +117,7 @@ export const MarqueeSection: React.FC = () => {
                   alt={t(item.titleKey)}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10"></div>
                 <div className="absolute bottom-0 inset-x-0 p-m text-white z-10 text-start">
                   <h4 className="text-sm md:text-base font-serif uppercase tracking-wider m-0 text-white font-semibold leading-tight">
                     {t(item.titleKey)}
@@ -136,7 +149,7 @@ export const MarqueeSection: React.FC = () => {
                   alt={t(item.titleKey)}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10"></div>
                 <div className="absolute bottom-0 inset-x-0 p-m text-white z-10 text-start">
                   <h4 className="text-sm md:text-base font-serif uppercase tracking-wider m-0 text-white font-semibold leading-tight">
                     {t(item.titleKey)}
