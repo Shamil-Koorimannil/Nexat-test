@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
     {
       title: t('footer.col5Title'),
       links: [
-        { label: t('footer.col5Title') + ' - info@nexat.sa', href: 'mailto:info@nexat.sa' },
+        { label: 'sales@nexat.llc', href: 'mailto:sales@nexat.llc' },
         { label: t('header.phone'), href: 'tel:+966566667976' },
       ],
     },
@@ -137,6 +137,26 @@ export const Footer: React.FC = () => {
         {/* Copyright info */}
         <div className="text-center mt-12 text-2xs text-gray-600 font-secondary">
           {t('footer.copyright')}
+        </div>
+
+        {/* Zywo Powered-by Bar */}
+        <div className="mt-6 pt-5 border-t border-white/5 flex justify-center items-center gap-2.5">
+          <span className="text-gray-600 font-secondary text-[10px] uppercase tracking-widest">
+            Powered &amp; Secured by
+          </span>
+          <a
+            href="https://zywo.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 opacity-50 hover:opacity-100 transition-opacity duration-300"
+            aria-label="Zywo — Digital Agency"
+          >
+            <img
+              src="/assets/Zywo Logo.webp"
+              alt="Zywo"
+              className="h-[18px] w-auto object-contain brightness-0 invert"
+            />
+          </a>
         </div>
       </div>
     </footer>

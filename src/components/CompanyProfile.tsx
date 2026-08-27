@@ -1,8 +1,23 @@
-﻿import React from 'react';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-// Building image paths
-const BUILDINGS = Array.from({ length: 14 }, (_, i) => `/assets/Buildings/b${i + 1}.jpg`);
+// Building image paths — using B1–B28 assets (reused across 14 slots)
+const BUILDINGS = [
+  '/assets/B1.png',
+  '/assets/B2.png',
+  '/assets/B3.png',
+  '/assets/B4.png',
+  '/assets/B5.png',
+  '/assets/B6.png',
+  '/assets/B7.png',
+  '/assets/B8.png',
+  '/assets/B18.png',
+  '/assets/B19.png',
+  '/assets/B20.png',
+  '/assets/B21.png',
+  '/assets/B22.png',
+  '/assets/B23.png',
+];
 
 // Bento grid of 5 building images
 const BentoBuildingGrid: React.FC<{ images: string[] }> = ({ images }) => (

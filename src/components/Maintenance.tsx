@@ -70,8 +70,8 @@ export const Maintenance: React.FC = () => {
         {/* Contact Email Link */}
         <div className="text-xs font-bold uppercase tracking-wider text-gray-400">
           <span className="mr-2xs">{t.contact}</span>
-          <a href="mailto:info@nexat.sa" className="text-black hover:text-[#DA9A62] transition-colors border-b border-black/10 pb-[2px]">
-            info@nexat.sa
+          <a href="mailto:sales@nexat.llc" className="text-black hover:text-[#DA9A62] transition-colors border-b border-black/10 pb-[2px]">
+            sales@nexat.llc
           </a>
         </div>
       </main>

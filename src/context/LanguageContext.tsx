@@ -116,7 +116,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         title: 'MESSAGE FROM THE CEO',
         quote: '"At NEXAT Construction, we believe every successful project begins with trust, technical excellence, and disciplined execution. Our commitment extends beyond constructing buildings—we deliver long-term value by transforming ambitious visions into sustainable assets."',
         body: 'Through engineering expertise, value engineering, quality systems, and uncompromising safety standards, we partner with clients to execute projects safely, efficiently, and on schedule. As Saudi Arabia continues its remarkable transformation under Vision 2030, NEXAT is proud to play an active role in developing world-class infrastructure.',
-        btnLabel: 'sales@nexat.sa',
+        btnLabel: 'sales@nexat.llc',
       },
       footer: {
         subscribeTitle: 'Subscribe to Bulletin',
@@ -312,7 +312,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         title: 'رسالة الرئيس التنفيذي',
         quote: '"في نكسات للمقاولات، نؤمن بأن كل مشروع ناجح يبدأ بالثقة، والتميز التقني، والتنفيذ المنضبط. التزامنا يتعدى تشييد المباني - نحن نقدم قيمة مستدامة طويلة الأمد."',
         body: 'من خلال الخبرة الفنية والهندسة القيمية ومعايير الجودة والسلامة الصارمة، نتشارك مع عملائنا لإنجاز المشاريع بأمان وكفاءة وضمن الجدول الزمني. نفخر في نكسات بأن نكون جزءاً فاعلاً من رؤية المملكة ٢٠٣٠.',
-        btnLabel: 'sales@nexat.sa',
+        btnLabel: 'sales@nexat.llc',
       },
       footer: {
         subscribeTitle: 'الاشتراك في النشرة الإخبارية',

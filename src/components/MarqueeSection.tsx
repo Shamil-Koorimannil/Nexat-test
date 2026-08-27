@@ -21,7 +21,7 @@ export const MarqueeSection: React.FC = () => {
   const row1Items: MarqueeCard[] = [
     { id: 1, image: '/assets/B9.png', titleKey: 'marquee.project1', subtitleKey: 'marquee.project1Sub' },
     { id: 2, image: '/assets/B10.png', titleKey: 'marquee.project2', subtitleKey: 'marquee.project2Sub' },
-    { id: 3, image: '/assets/six_flags_showcase.png', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
+    { id: 3, image: '/assets/B17.jpg', titleKey: 'marquee.project3', subtitleKey: 'marquee.project3Sub' },
     { id: 4, image: '/assets/B11.png', titleKey: 'marquee.project4', subtitleKey: 'marquee.project4Sub' },
     { id: 5, image: '/assets/B12.png', titleKey: 'marquee.project5', subtitleKey: 'marquee.project5Sub' },
   ];
@@ -47,7 +47,7 @@ export const MarqueeSection: React.FC = () => {
     window.addEventListener('resize', checkMobile);
 
     const animate = () => {
-      currentProgress.current += (targetProgress.current - currentProgress.current) * 0.04;
+      currentProgress.current += (targetProgress.current - currentProgress.current) * 0.12;
       setScrollProgress(currentProgress.current);
       rafRef.current = requestAnimationFrame(animate);
     };
@@ -76,8 +76,9 @@ export const MarqueeSection: React.FC = () => {
     };
   }, []);
 
-  const row1Translation = (scrollProgress - 0.5) * -40;
-  const row2Translation = -30 + (scrollProgress - 0.5) * 40;
+  // Row 1 slides LEFT, Row 2 slides RIGHT as you scroll down
+  const row1Translation = (scrollProgress - 0.5) * -320;
+  const row2Translation = (scrollProgress - 0.5) * 320;
 
   return (
     <section

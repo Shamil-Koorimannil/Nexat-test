@@ -82,7 +82,7 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-m">
             {/* Request Quote Button */}
             <a
-              href="mailto:info@nexat.sa"
+              href="mailto:sales@nexat.llc"
               className="hidden lg:flex items-center gap-xs text-xs font-bold uppercase tracking-wider text-black border border-black/25 px-s py-2xs rounded hover:bg-black hover:text-white transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -128,7 +128,7 @@ export const Header: React.FC = () => {
               </a>
             ))}
             <a
-              href="mailto:info@nexat.sa"
+              href="mailto:sales@nexat.llc"
               className="w-full text-center text-xs font-bold uppercase tracking-wider text-white bg-black py-s rounded"
               onClick={() => setMobileMenuOpen(false)}
             >

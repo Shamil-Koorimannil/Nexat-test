@@ -19,7 +19,7 @@ export const HeroCarousel: React.FC = () => {
   const slides: Slide[] = [
     {
       id: 1,
-      image: '/assets/project_tower.png',
+      image: '/assets/B17.jpg',
       titleEn: 'STRUCTURAL CONSTRUCTION & REINFORCED CONCRETE',
       titleAr: 'الأعمال الإنشائية والخرسانة المسلحة المتقدمة',
       taglineEn: 'NEXAT Construction Co. | Engineering Excellence',
@@ -59,7 +59,7 @@ export const HeroCarousel: React.FC = () => {
     },
     {
       id: 5,
-      image: '/assets/headquarters.png',
+      image: '/assets/B28.png',
       titleEn: 'SITE PREPARATION & SUB-GRADE CIVIL WORKS',
       titleAr: 'تجهيز مواقع البناء وتدعيم الأساسات الإنشائية العميقة',
       taglineEn: 'NEXAT Civil Works | Rigorous Site Engineering',

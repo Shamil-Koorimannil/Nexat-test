@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from './context/LanguageContext';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { ScrollVideoCanvas } from './components/ScrollVideoCanvas';
 import { Header } from './components/Header';
 import { HeroCarousel } from './components/HeroCarousel';
@@ -115,6 +116,9 @@ const certifications: Certification[] = [
 function App() {
   const isMaintenance = false; // Set to true to activate the offline maintenance page
   const { t, lang } = useLanguage();
+
+  // Slow, cinematic page scroll — sections glide into view
+  useSmoothScroll(0.09, 0.7);
 
   const [isMobile, setIsMobile] = useState(false);
 

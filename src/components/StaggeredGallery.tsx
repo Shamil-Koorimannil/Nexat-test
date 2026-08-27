@@ -34,17 +34,18 @@ export const StaggeredGallery: React.FC = () => {
 
   const col4 = [
     '/assets/B7.png',
-    '/assets/B8.png'
+    '/assets/B8.png',
+    '/assets/B24.png'
   ];
 
-  // Combine columns for mobile view
-  const row1Mobile = [...col1, ...col2];
-  const row2Mobile = [...col3, ...col4];
+  // Combine columns for mobile view — include more images for scroll interest
+  const row1Mobile = [...col1, ...col2, '/assets/B25.png', '/assets/B26.png'];
+  const row2Mobile = [...col3, ...col4, '/assets/B27.png', '/assets/B28.png'];
 
   // Smooth scroll logic with requestAnimationFrame
   const animate = () => {
-    // Lerping: lower factor = smoother/slower catch-up
-    currentProgress.current += (targetProgress.current - currentProgress.current) * 0.04;
+    // Lerping: 0.12 = fast image chase, sections themselves scroll slow via useSmoothScroll
+    currentProgress.current += (targetProgress.current - currentProgress.current) * 0.12;
     setScrollProgress(currentProgress.current);
     requestRef.current = requestAnimationFrame(animate);
   };
@@ -94,27 +95,27 @@ export const StaggeredGallery: React.FC = () => {
     switch (index) {
       case 0:
         baseOffset = 0;
-        speed = -50;
+        speed = -220;   // fast upward
         break;
       case 1:
-        baseOffset = 15;
-        speed = -18;
+        baseOffset = 60;
+        speed = -80;    // medium up (staggered start)
         break;
       case 2:
-        baseOffset = -10;
-        speed = -60;
+        baseOffset = -40;
+        speed = -260;   // fastest upward
         break;
       case 3:
-        baseOffset = 20;
-        speed = -28;
+        baseOffset = 80;
+        speed = -130;   // medium-fast
         break;
       default:
         break;
     }
 
-    // On tablet, scale speeds down to 30% to prevent layout breaks
-    const actualSpeed = isTablet ? speed * 0.3 : speed;
-    const actualOffset = isTablet ? baseOffset * 0.3 : baseOffset;
+    // On tablet, scale speeds down to 40% to prevent layout breaks
+    const actualSpeed = isTablet ? speed * 0.4 : speed;
+    const actualOffset = isTablet ? baseOffset * 0.4 : baseOffset;
     
     // Map vertical scroll progress to translation Y
     const translateY = (scrollProgress - 0.5) * actualSpeed + actualOffset;
@@ -125,9 +126,9 @@ export const StaggeredGallery: React.FC = () => {
     };
   };
 
-  // Mobile horizontal offsets based on vertical scroll
-  const mobileRow1Translation = (scrollProgress - 0.5) * -50;
-  const mobileRow2Translation = -18 + (scrollProgress - 0.5) * 45;
+  // Mobile horizontal offsets — big enough to feel fast
+  const mobileRow1Translation = (scrollProgress - 0.5) * -200;
+  const mobileRow2Translation = (scrollProgress - 0.5) * 200;
 
   return (
     <section 
