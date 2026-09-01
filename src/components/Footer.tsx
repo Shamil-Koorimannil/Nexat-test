@@ -44,8 +44,10 @@ export const Footer: React.FC = () => {
     {
       title: t('footer.col4Title'),
       links: [
-        { label: t('header.tollFree'), href: '#' },
-        { label: t('footer.col4Title') + ' - Jeddah', href: '#' },
+        { label: t('footer.addressLine1'), href: '#' },
+        { label: t('footer.addressLine2'), href: '#' },
+        { label: t('footer.addressLine3'), href: '#' },
+        { label: t('footer.shortAddress'), href: '#' },
       ],
     },
     {

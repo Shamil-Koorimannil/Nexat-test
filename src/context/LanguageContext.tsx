@@ -32,7 +32,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     en: {
       header: {
         languageLabel: 'Language:',
-        tollFree: 'Riyadh, Saudi Arabia',
+        tollFree: 'Building 4258, Asma Bint Malik St, Al Arid Dist., Riyadh 13341, KSA',
         phone: 'Call: +966 56 666 7976',
         requestQuote: 'Request Quote',
         aboutUs: 'About Us',
@@ -127,8 +127,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         col1Title: 'About NEXAT',
         col2Title: 'Our Divisions',
         col3Title: 'Capabilities',
-        col4Title: 'Offices',
+        col4Title: 'Head Office',
         col5Title: 'Contact Assist',
+        addressLine1: 'Building 4258, Asma Bint Malik St',
+        addressLine2: 'Al Arid Dist., Riyadh 13341',
+        addressLine3: 'Kingdom of Saudi Arabia',
+        shortAddress: 'National Addr: RRRG4258',
         copyright: '© 2026 NEXAT Construction Co. All rights reserved.',
         logoLabel: 'CONSTRUCTION',
         terms: 'Terms of Use',
@@ -220,7 +224,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           email: "Email",
           phone: "Phone",
           address: "Address",
-          office: "Head Office: Riyadh, Saudi Arabia",
+          office: "Head Office: Building 4258, Asma Bint Malik St, Al Arid Dist., Riyadh 13341, Kingdom of Saudi Arabia (Short Address: RRRG4258)",
           social: "Social Media"
         }
       }
@@ -228,7 +232,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     ar: {
       header: {
         languageLabel: 'اللغة:',
-        tollFree: 'الرياض، المملكة العربية السعودية',
+        tollFree: 'مبنى ٤٢٥٨، شارع اسماء بنت مالك، حي العارض، الرياض ١٣٣٤١، المملكة العربية السعودية',
         phone: 'اتصال: +٩٦٦ ٥٦ ٦٦٦ ٧٩٧٦',
         requestQuote: 'طلب سعر',
         aboutUs: 'عن الشركة',
@@ -323,8 +327,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         col1Title: 'عن نكسات',
         col2Title: 'أقسامنا',
         col3Title: 'القدرات',
-        col4Title: 'مكاتبنا',
+        col4Title: 'المكتب الرئيسي',
         col5Title: 'المساعدة والاتصال',
+        addressLine1: 'مبنى ٤٢٥٨، شارع اسماء بنت مالك',
+        addressLine2: 'حي العارض، الرياض ١٣٣٤١',
+        addressLine3: 'المملكة العربية السعودية',
+        shortAddress: 'العنوان المختصر: RRRG4258',
         copyright: '© ٢٠٢٦ شركة نكسات للمقاولات. جميع الحقوق محفوظة.',
         logoLabel: 'للمقاولات',
         terms: 'شروط الاستخدام',
@@ -416,7 +424,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           email: "البريد الإلكتروني",
           phone: "الهاتف",
           address: "العنوان",
-          office: "المكتب الرئيسي: الرياض، المملكة العربية السعودية",
+          office: "المكتب الرئيسي: مبنى ٤٢٥٨، شارع اسماء بنت مالك، حي العارض، الرياض ١٣٣٤١، المملكة العربية السعودية (العنوان المختصر: RRRG4258)",
           social: "قنوات التواصل"
         }
       }
