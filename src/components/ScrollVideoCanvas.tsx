@@ -64,6 +64,14 @@ interface ScrollVideoCanvasProps {
    */
   containerHeight?: string;
   /**
+   * Optional callback triggered on preloading progress update
+   */
+  onLoadProgress?: (progress: number, loadedCount: number, totalFrames: number) => void;
+  /**
+   * Optional callback triggered when all frames finish preloading
+   */
+  onLoadComplete?: () => void;
+  /**
    * Render function to place dynamic HTML text/overlays on top of the canvas
    */
   children?: (scrollProgress: number) => React.ReactNode;
@@ -74,6 +82,8 @@ export const ScrollVideoCanvas: React.FC<ScrollVideoCanvasProps> = ({
   startFrameIndex = 40,
   framePathBuilder = (index) => `/nexath image seq/ezgif-frame-${String(index).padStart(3, '0')}.jpg`,
   containerHeight = '350vh',
+  onLoadProgress,
+  onLoadComplete,
   children,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -92,20 +102,31 @@ export const ScrollVideoCanvas: React.FC<ScrollVideoCanvasProps> = ({
   useEffect(() => {
     const loadedImages: HTMLImageElement[] = [];
     let isCancelled = false;
+    let loadedCount = 0;
+
+    const reportProgress = () => {
+      if (isCancelled) return;
+      loadedCount++;
+      const pct = Math.min(100, Math.round((loadedCount / totalFrames) * 100));
+      onLoadProgress?.(pct, loadedCount, totalFrames);
+    };
 
     const loadImage = (index: number): Promise<void> => {
       return new Promise((resolve) => {
         const img = new Image();
         img.src = framePaths[index];
         img.onload = () => {
-          if (isCancelled) return;
-          loadedImages[index] = img;
+          if (!isCancelled) {
+            loadedImages[index] = img;
+          }
+          reportProgress();
           resolve();
         };
         img.onerror = () => {
-          if (isCancelled) return;
-          // Fallback to the first frame if download fails
-          loadedImages[index] = loadedImages[0];
+          if (!isCancelled) {
+            loadedImages[index] = loadedImages[0] || img;
+          }
+          reportProgress();
           resolve();
         };
       });
@@ -118,7 +139,7 @@ export const ScrollVideoCanvas: React.FC<ScrollVideoCanvasProps> = ({
       setImages([...loadedImages]);
 
       // Load remaining frames in small chunks to keep the browser responsive
-      const chunkSize = 8;
+      const chunkSize = 16;
       for (let i = 1; i < totalFrames; i += chunkSize) {
         if (isCancelled) return;
         const chunk: Promise<void>[] = [];
@@ -128,6 +149,9 @@ export const ScrollVideoCanvas: React.FC<ScrollVideoCanvasProps> = ({
         await Promise.all(chunk);
         if (isCancelled) return;
         setImages([...loadedImages]);
+      }
+      if (!isCancelled) {
+        onLoadComplete?.();
       }
     };
 

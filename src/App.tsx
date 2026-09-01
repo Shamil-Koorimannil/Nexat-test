@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from './context/LanguageContext';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { ScrollVideoCanvas } from './components/ScrollVideoCanvas';
+import { Preloader } from './components/Preloader';
 import { Header } from './components/Header';
 import { HeroCarousel } from './components/HeroCarousel';
 import { StaggeredGallery } from './components/StaggeredGallery';
@@ -121,6 +122,9 @@ function App() {
   useSmoothScroll(0.09, 0.7);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [isPreloaderComplete, setIsPreloaderComplete] = useState(false);
+  const [isPreloaderDismissed, setIsPreloaderDismissed] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -131,12 +135,40 @@ function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Mobile preloader progress simulation if canvas sequence is hidden
+  useEffect(() => {
+    if (isMobile) {
+      let current = 0;
+      const interval = setInterval(() => {
+        current += Math.floor(Math.random() * 15) + 12;
+        if (current >= 100) {
+          current = 100;
+          setLoadProgress(100);
+          setIsPreloaderComplete(true);
+          clearInterval(interval);
+        } else {
+          setLoadProgress(current);
+        }
+      }, 120);
+      return () => clearInterval(interval);
+    }
+  }, [isMobile]);
+
   if (isMaintenance) {
     return <Maintenance />;
   }
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
+      {/* Luxury Minimal Preloader */}
+      {!isPreloaderDismissed && (
+        <Preloader
+          progress={loadProgress}
+          isComplete={isPreloaderComplete}
+          onFinished={() => setIsPreloaderDismissed(true)}
+        />
+      )}
+
       {/* Navbar with thin top bar and sticky header */}
       <Header />
 
@@ -148,6 +180,8 @@ function App() {
             totalFrames={245}
             startFrameIndex={40}
             containerHeight="350vh"
+            onLoadProgress={(pct) => setLoadProgress(pct)}
+            onLoadComplete={() => setIsPreloaderComplete(true)}
           >
             {(progress) => {
               // Calculate opacity for Phase 1 (Title and Tagline)

@@ -140,6 +140,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         hse: 'HSE Compliance',
         conduct: 'Code of Conduct',
       },
+      preloader: {
+        tagline: 'NEXAT Construction Co.',
+        subtitle: 'EPC & General Contracting',
+        status: 'Loading Architectural Frames...',
+        framesCount: '245 High-Precision Frames',
+        location: 'Riyadh, Saudi Arabia',
+        complete: 'System Ready',
+      },
       maintenance: {
         tagline: '[ SYSTEM UPGRADE ]',
         title: 'TEMPORARILY OFFLINE',
@@ -339,6 +347,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         privacy: 'سياسة الخصوصية',
         hse: 'التزام السلامة HSE',
         conduct: 'ميثاق السلوك',
+      },
+      preloader: {
+        tagline: 'شركة نكسات للمقاولات',
+        subtitle: 'المقاولات العامة والهندسة',
+        status: 'جاري تحميل الإطارات المعمارية...',
+        framesCount: '٢٤٥ إطاراً عالي الدقة',
+        location: 'الرياض، المملكة العربية السعودية',
+        complete: 'النظام جاهز',
       },
       maintenance: {
         tagline: '[ ترقية النظام ]',
