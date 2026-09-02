@@ -14,6 +14,7 @@ import { GlobalPresence } from './components/GlobalPresence';
 import { Expertise } from './components/Expertise';
 import { Footer } from './components/Footer';
 import { Maintenance } from './components/Maintenance';
+import { DraggableWhatsAppWidget } from './components/DraggableWhatsAppWidget';
 
 import { CompanyProfile } from './components/CompanyProfile';
 
@@ -319,6 +320,9 @@ function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating Draggable WhatsApp Widget */}
+      <DraggableWhatsAppWidget />
     </div>
   );
 }
